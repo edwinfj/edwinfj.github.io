@@ -1,0 +1,35 @@
+/* define the fonts */
+@font-face {font-family: open_sans; src: url("open_sans/OpenSans-Regular.ttf"); }
+@font-face {font-family: open_sans; src: url("open_sans/OpenSans-Italic.ttf"); font-style: italic; } 
+@font-face {font-family: open_sans; src: url("open_sans/OpenSans-Bold.ttf"); font-weight: bold; }
+@font-face {font-family: open_sans; src: url("open_sans/OpenSans-BoldItalic.ttf"); font-style: italic; font-weight: bold; }
+@font-face {font-family: open_sans_light; src: url("open_sans/OpenSans-Light.ttf"); }
+@font-face {font-family: open_sans_light; src: url("open_sans/OpenSans-LightItalic.ttf"); font-style: italic; }
+@font-face {font-family: open_sans_semibold; src: url("open_sans/OpenSans-Semibold.ttf"); }
+@font-face {font-family: open_sans_semibold; src: url("open_sans/OpenSans-SemiboldItalic.ttf"); font-style: italic; }
+@font-face {font-family: open_sans_extrabold; src: url("open_sans/OpenSans-ExtraBold.ttf"); }
+@font-face {font-family: open_sans_extrabold; src: url("open_sans/OpenSans-ExtraBoldItalic.ttf"); font-style: italic; }
+
+/* define some global parameters */
+body {font-family: open_sans, sans_serif; line-height: 1.5; }
+* {box-sizing: border-box; border: 1px black solid;} /*border for debug*/
+[class*="col"] {width: 100%; }
+
+/* define column for mobile screens */
+.col1-s{width:8.33333%;}
+.col2-s{width:16.66666%;}
+.col3-s{width:24.99999%;}
+.col4-s{width:33.33333%;}
+.col5-s{width:41.66666%;}
+.col6-s{width:49.99999%;}
+.col7-s{width:58.33333%;}
+.col8-s{width:66.66666%;}
+.col9-s{width:74.99999;}
+.col10-s{width:83.33333%;}
+.col11-s{width:91.66666%;}
+.col12-s{width:99.99999%;}
+
+#header {text-align: center; max-height: 400px;background:url("../images/sailing-boat.jpg") center center/cover no-repeat;}
+.banner {margin: auto; padding: 50px 0;}
+.banner ul {margin:0;padding:0;overflow:hidden;}
+.banner li {float: left;font-size: 2em;}
