@@ -12,7 +12,7 @@
 
 /* define some global parameters */
 body {font-family: open_sans, sans_serif; line-height: 1.5; margin:0;}
-* {box-sizing: border-box; border: 1px black solid;} /*border for debug*/
+* {box-sizing: border-box;} /*border for debug*/
 [class*="col"] {width: 100%; }
 
 /* define column for mobile screens */
@@ -44,12 +44,13 @@ li{list-style-type:none;font-weight:bold;padding:5px 0;}
 .avatarimg{border-radius:50%;width:90%;max-width:210px;margin:5px auto;}
 .centertxt{text-align:center;}
 section{padding:30px 5%;}
-h1,h2,h3,h4,h5,h6,p {margin:0;}
+h1,h2,h3,h4,h5,h6,p {margin:8px 0;}
 .skillhead{width:140px;font-weight:bold;}
 .skillbody{font-style:italic;}
-hr{margin:10px 0;border-style:dotted;}
+hr{margin:20px;border-style:dotted;}
 .projectitem{margin:30px 5%;}
 nav{display:none;}
+nav li{border:1px solid black;}
 a{text-decoration:none;}
 .tag{display:inline-block;}
 
