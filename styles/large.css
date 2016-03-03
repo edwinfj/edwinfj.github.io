@@ -19,6 +19,7 @@ article{padding: 20px 1%;margin:auto;}
 nav{display:block;}
 
 /* section for specified styling */
-#header{max-height:300px;}
+#header{height:400px;}
+#header > h1 {margin: 90px auto 40px;}
 #nav2{display:none;}
 #articlesection{padding:0;}

@@ -43,7 +43,7 @@ li{list-style-type:none;font-weight:bold;padding:5px 0;}
 .flexbottom{align-items:baseline;}
 .avatarimg{border-radius:50%;width:90%;max-width:210px;margin:5px auto;}
 .centertxt{text-align:center;}
-section{padding:30px 5%;}
+section{padding:40px 5%;}
 h1,h2,h3,h4,h5,h6,p {margin:8px 0;}
 .skillhead{width:140px;font-weight:bold;}
 .skillbody{font-style:italic;}
@@ -55,9 +55,9 @@ a{text-decoration:none;}
 .tag{display:inline-block;}
 
 /* section for specified styling*/
-#header {text-align: center; max-height: 200px;background:url("../images/sailing-boat.jpg") center center/cover no-repeat;margin:0;padding:30px 0;}
+#header {text-align: center; height: 200px;background:url("../images/sailing-boat.jpg") center center/cover no-repeat;margin:0;padding:30px 0;}
 #header > * {margin: auto;}
-#header > h1 {margin: 0 auto 20px;color:rgba(255,255,255,0.9);}
+#header > h1 {margin: 20px auto 10px;color:rgba(255,255,255,0.9);}
 #bannerlist li {font-size: 1.5em;}
 #paragraph{justify-content:flex-start;}
 #paragraph p{margin:10px 5%;}
