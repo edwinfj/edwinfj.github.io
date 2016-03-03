@@ -15,8 +15,10 @@
 .col12-l{width:99.99999%;}
 
 /* section for general styling */
-article{margin:0 0 0 300px;}
-.navbar{display:block;position:fixed;width:350px;left:0;margin-top:-30px;}
+article{padding: 20px 1%;margin:auto;}
+nav{display:block;}
 
 /* section for specified styling */
 #header{max-height:300px;}
+#nav2{display:none;}
+#articlesection{padding:0;}
