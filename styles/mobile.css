@@ -1,17 +1,17 @@
 /* define the fonts */
-@font-face {font-family: open_sans; src: url("open_sans/OpenSans-Regular.ttf"); }
-@font-face {font-family: open_sans; src: url("open_sans/OpenSans-Italic.ttf"); font-style: italic; } 
-@font-face {font-family: open_sans; src: url("open_sans/OpenSans-Bold.ttf"); font-weight: bold; }
-@font-face {font-family: open_sans; src: url("open_sans/OpenSans-BoldItalic.ttf"); font-style: italic; font-weight: bold; }
-@font-face {font-family: open_sans_light; src: url("open_sans/OpenSans-Light.ttf"); }
-@font-face {font-family: open_sans_light; src: url("open_sans/OpenSans-LightItalic.ttf"); font-style: italic; }
-@font-face {font-family: open_sans_semibold; src: url("open_sans/OpenSans-Semibold.ttf"); }
-@font-face {font-family: open_sans_semibold; src: url("open_sans/OpenSans-SemiboldItalic.ttf"); font-style: italic; }
-@font-face {font-family: open_sans_extrabold; src: url("open_sans/OpenSans-ExtraBold.ttf"); }
-@font-face {font-family: open_sans_extrabold; src: url("open_sans/OpenSans-ExtraBoldItalic.ttf"); font-style: italic; }
+@font-face {font-family: open_sans; src: url("../open_sans/OpenSans-Regular.ttf");}
+@font-face {font-family: open_sans; src: url("../open_sans/OpenSans-Italic.ttf"); font-style: italic; } 
+@font-face {font-family: open_sans; src: url("../open_sans/OpenSans-Bold.ttf"); font-weight: bold; }
+@font-face {font-family: open_sans; src: url("../open_sans/OpenSans-BoldItalic.ttf"); font-style: italic; font-weight: bold; }
+@font-face {font-family: open_sans_light; src: url("../open_sans/OpenSans-Light.ttf");}
+@font-face {font-family: open_sans_lightitalic; src: url("../open_sans/OpenSans-LightItalic.ttf"); font-style:italic;}
+@font-face {font-family: open_sans_semibold; src: url("../open_sans/OpenSans-Semibold.ttf"); }
+@font-face {font-family: open_sans_semibold; src: url("../open_sans/OpenSans-SemiboldItalic.ttf"); font-style: italic; }
+@font-face {font-family: open_sans_extrabold; src: url("../open_sans/OpenSans-ExtraBold.ttf");}
+@font-face {font-family: open_sans_extrabold; src: url("../open_sans/OpenSans-ExtraBoldItalic.ttf"); font-style:italic;}
 
 /* define some global parameters */
-body {font-family: open_sans, sans_serif; line-height: 1.5; }
+body {font-family: open_sans, sans_serif; line-height: 1.5; margin:0;}
 * {box-sizing: border-box; border: 1px black solid;} /*border for debug*/
 [class*="col"] {width: 100%; }
 
@@ -29,16 +29,35 @@ body {font-family: open_sans, sans_serif; line-height: 1.5; }
 .col11-s{width:91.66666%;}
 .col12-s{width:99.99999%;}
 
-#header {text-align: center; max-height: 300px;background:url("../images/sailing-boat.jpg") center center/100% auto no-repeat;margin:0;padding:30px 0;}
+/* section for general styling */
+@keyframes fadein { from{filter:opacity(0);} to{filter:opacity(100%);} }
+.homepage{animation:fadein 3s;}
+ul {padding:0;margin:0;}
+li{list-style-type:none;}
+.clearfloat > *{float:left;}
+.clearfloat{overflow:hidden;}
+.clearfloat::after{content:"";clear:both;}
+.flexcontainer{display:flex;flex-wrap:wrap;}
+.flexcolumn{flex-direction:column;}
+.flexcenter{align-content:center;}
+.flexbottom{align-items:baseline;}
+.avatarimg{border-radius:50%;width:90%;max-width:210px;margin:5px auto;}
+.centertxt{text-align:center;}
+section{padding:30px 5%;}
+h1,h2,h3,h4,h5,h6,p {margin:0;}
+.skillhead{width:140px;font-weight:bold;}
+.skillbody{font-style:italic;}
+hr{margin:10px 0;border-style:dotted;}
+.projectitem{margin:30px 5%;}
+.navbar{display:none;}
+a{text-decoration:none;}
+.tag{display:inline-block;}
+
+/* section for specified styling*/
+#header {text-align: center; max-height: 200px;background:url("../images/sailing-boat.jpg") center center/cover no-repeat;margin:0;padding:30px 0;}
 #header > * {margin: auto;}
-#header > h1 {margin: 0 auto 10px;}
-.bannerlist {margin:10px;padding:0;overflow:hidden;}
-.bannerlist li {float: left;font-size: 1.5em;}
-.bannerlist::after, #figure::after{content:"";clear:both;}
-#intro,#figure{overflow:hidden;}
-.flexcontainer{display:flex;flex-wrap:wrap;align-content:center;justify-content:center;}
-.paragraph p{margin:10px 30px;}
-#figure > div {text-align:center;}
-[alt="Avatar"]{border-radius:50%;width:90%;max-width:210px;margin:5px auto;}
-section{padding:20px;}
-#footer{text-align:center;}
+#header > h1 {margin: 0 auto 20px;color:rgba(255,255,255,0.9);}
+#bannerlist li {font-size: 1.5em;font-weight:bold;}
+#paragraph{justify-content:flex-start;}
+#paragraph p{margin:10px 5%;}
+#resource > h1{margin:0 0 20px;text-align:center;}

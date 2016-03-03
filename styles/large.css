@@ -13,3 +13,10 @@
 .col10-l{width:83.33333%;}
 .col11-l{width:91.66666%;}
 .col12-l{width:99.99999%;}
+
+/* section for general styling */
+article{margin:0 0 0 300px;}
+.navbar{display:block;position:fixed;width:350px;left:0;margin-top:-30px;}
+
+/* section for specified styling */
+#header{max-height:300px;}

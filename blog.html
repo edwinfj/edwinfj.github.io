@@ -14,7 +14,7 @@
 <!-- Navigation bar on top of page -->
 <header id="header">
 	<h1>Welcome to my Novoland</h1>
-	<ul class="col12-s col6-l bannerlist">
+	<ul id="bannerlist" class="col12-s col6-l clearfloat">
 		<li id="home" class="col4-s col4-l"><a href="index.html">Home</a></li>
 		<li id="demo" class="col4-s col4-l"><a href="demo.html">Demo</a></li>
 		<li id="blog" class="col4-s col4-l"><a href="blog.html">Blog</a></li>
@@ -22,40 +22,34 @@
 </header>
 <!-- section for articles, containing two nav bars to the left -->
 <section>
-	<aside>
-		<div id="articleNav">
-			<nav id="navBar1" class="navBar">
-				<ul>
-					<li id="allarticles">All Articles</li>
-					<li id="chrono">Chronological</li>
-					<li id="topics">Topics</li>
-				</ul>
-			</nav>
-			<nav id="navBar2" class="navBar">
-				<ul>
-					<li>TBD</li>
-					<li>TBD</li>
-					<li>TBD</li>
-				</ul>
-			</nav>
+	<div class="navbar clearfloat">
+		<nav id="nav1" class="col6-l col6-s">
+			<ul>
+				<li id="allarticles">All Articles</li>
+				<li id="chrono">Chronological</li>
+				<li id="topics">Topics</li>
+			</ul>
+		</nav>
+		<nav id="nav2" class="col6-l col6-s">
+			<ul>
+				<li>TBD</li>
+				<li>TBD</li>
+				<li>TBD</li>
+			</ul>
+		</nav>		
+	</div>
+	<article>
+		<h1 class="artiletitle centertxt">Title of the article</h1>
+		<div class="titlenote centertxt">
+			<time>time of publish</time>
+			<div class="tag">
+				<span><a href="">tag1</a></span>
+				<span><a href="">tag2</a></span>
+			</div>
 		</div>
-		<article>
-			<hgroup>
-				<h1>Head of the article</h1>
-				<h3 class="subtitle"><time>time of publish</time></h3>
-			</hgroup>
-			<p>paragraph1</p>
-			<p>paragraph2</p>
-		</article>
-	</aside>
+		<p>paragraph1</p>
+		<p>paragraph2</p>
+	</article>
 </section>
-<!-- footer for contact information, copywrite, etc. -->
-<footer id="footer">
-	<a href="https://github.com/edwinfj/"><img src="" alt="Github"></a>
-	<a href="https://plus.google.com/+EdwinFang"><img src="" alt="Google+"></a>
-	<a href="https://sg.linkedin.com/in/jfang7"><img src="" alt="Linkedin"></a>
-	<a href="mailto:jing.fang.zju@gmail.com"><img src="" alt="email"></a>
-</footer>
-</footer>
 </body>
 </html>
