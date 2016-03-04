@@ -14,12 +14,12 @@
 .col11-l{width:91.66666%;}
 .col12-l{width:99.99999%;}
 
-/* section for general styling */
+/* section for generic styling, usually as styling trigger */
+header{height:400px;}
+header > h1 {margin: 90px auto 40px;}
 article{padding: 20px 1%;margin:auto;}
 nav{display:block;}
 
 /* section for specified styling */
-#header{height:400px;}
-#header > h1 {margin: 90px auto 40px;}
 #nav2{display:none;}
 #articlesection{padding:0;}

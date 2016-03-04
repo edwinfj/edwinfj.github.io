@@ -29,11 +29,8 @@ body {font-family: open_sans, sans_serif; line-height: 1.5; margin:0;}
 .col11-s{width:91.66666%;}
 .col12-s{width:99.99999%;}
 
-/* section for general styling */
-@keyframes fadein { from{filter:opacity(0);} to{filter:opacity(100%);} }
-.homepage{animation:fadein 3s;}
-ul {padding:0;margin:0;}
-li{list-style-type:none;font-weight:bold;padding:5px 0;}
+/* section for generic styling, usually as styling button */
+@keyframes fadein { from{-webkit-filter:opacity(0);filter:opacity(0);} to{-webkit-filter:opacity(100%);filter:opacity(100%);} }
 .clearfloat > *{float:left;}
 .clearfloat{overflow:hidden;}
 .clearfloat::after{content:"";clear:both;}
@@ -41,24 +38,49 @@ li{list-style-type:none;font-weight:bold;padding:5px 0;}
 .flexcolumn{flex-direction:column;}
 .flexcenter{align-content:center;}
 .flexbottom{align-items:baseline;}
-.avatarimg{border-radius:50%;width:90%;max-width:210px;margin:5px auto;}
+.flexbalance{justify-content:space-around;}
 .centertxt{text-align:center;}
+.smaller{font-size:1.1em;}
+
+/* section for specified styling, usually object oriented */
+ul {padding:0;margin:0;}
+ul a{display:block;text-align:center;}
+li{list-style-type:none;font-weight:bold;padding:5px 0;}
+header {text-align: center; height: 200px;background:url("../images/sailing-boat.jpg") center center/cover no-repeat;margin:0;padding:30px 0;}
+header > * {margin: auto;}
+header > h1 {margin: 20px auto 10px;color:rgba(255,255,255,0.9);text-shadow:0px 0px 10px #222222;}
+header.homepage{-webkit-animation:fadein 3s;animation:fadein 3s;}
 section{padding:40px 5%;}
 h1,h2,h3,h4,h5,h6,p {margin:8px 0;}
-.skillhead{width:140px;font-weight:bold;}
-.skillbody{font-style:italic;}
-hr{margin:20px;border-style:dotted;}
-.projectitem{margin:30px 5%;}
 nav{display:none;}
-nav li{border:1px solid black;}
+nav a{background-color:rgba(25,51,77,0.7);color:rgba(255,255,255,0.9);border:1px solid white;}
+nav a:hover{box-shadow:0px 0px 5px 2px #ffffff inset;}
 a{text-decoration:none;}
-.tag{display:inline-block;}
+hr{width:80%;border-style:dashed;}
 
-/* section for specified styling*/
-#header {text-align: center; height: 200px;background:url("../images/sailing-boat.jpg") center center/cover no-repeat;margin:0;padding:30px 0;}
-#header > * {margin: auto;}
-#header > h1 {margin: 20px auto 10px;color:rgba(255,255,255,0.9);}
-#bannerlist li {font-size: 1.5em;}
+#bannerlist a{font-size: 1.5em;background-color:rgba(220,220,220,0.4);border-right:2px solid rgba(255,255,255,0.9);}
+#bannerlist a:last-child{border-right:none;}
+#bannerlist a:link{color:rgba(255,255,255,0.9);}
+#bannerlist a:hover{box-shadow:0px 0px 10px 2px #ffffff inset;}
+#bannerlist a:visited{color:rgba(255,255,255,0.9);}
+.avatarimg{border-radius:50%;width:90%;max-width:210px;margin:5px auto;}
+#name{margin:0 0 10px;}
 #paragraph{justify-content:flex-start;}
 #paragraph p{margin:10px 5%;}
-#resource > h1{margin:0 0 20px;text-align:center;}
+#resource > h1{margin:0 0 10px;text-align:center;}
+.resourceitem{padding:10px 0;}
+.resourceitem a:link{color:#445588;}
+.resourceitem a:hover{box-shadow:0px 0px 5px 2px #777777;border-radius:2px;color:#445588;}
+.resourceitem a:visited{color:#445588;}
+.resourceitem p, .titlenote{color:#666666;}
+
+.skillhead{width:140px;font-weight:bold;}
+.skillbody{font-style:italic;}
+.projectitem{margin:30px 5%;}
+.tag, .tag a{display:inline-block;}
+.icon{height:40px;}
+.icon:hover{box-shadow:0px 0px 5px 5px #777777;border-radius:5px;}
+
+.projectitem .icon{height:26px;}
+.titlenote time{margin:0 30px 0 0;}
+.tag a{margin:0 3px;}

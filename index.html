@@ -12,12 +12,12 @@
 
 <body>
 <!-- Navigation bar on top of page -->
-<header id="header" class="homepage">
+<header class="homepage">
 	<h1>Welcome to my Novoland</h1>
 	<ul id="bannerlist" class="col12-s col6-l clearfloat">
-		<li id="home" class="col4-s col4-l"><a href="index.html">Home</a></li>
-		<li id="demo" class="col4-s col4-l"><a href="demo.html">Demo</a></li>
-		<li id="blog" class="col4-s col4-l"><a href="blog.html">Blog</a></li>
+		<a href="index.html" class="col4-s col4-l"><li>Home</li></a>
+		<a href="demo.html" class="col4-s col4-l"><li>Demo</li></a>
+		<a href="blog.html" class="col4-s col4-l"><li>Blog</li></a>
 	</ul>
 </header>
 <!-- Introduction section. Tell something about me and this website. -->
@@ -27,12 +27,12 @@
 			<img class="avatarimg" src="images/GintamaAvatar.png" alt="Avatar">
 		</div>
 		<div class="col12-l col12-s">
-			<div>Jing Fang</div>
-			<div>
-				<a href="https://github.com/edwinfj/"><img src="" alt="Github"></a>
-				<a href="https://plus.google.com/+EdwinFang"><img src="" alt="Google+"></a>
-				<a href="https://sg.linkedin.com/in/jfang7"><img src="" alt="Linkedin"></a>
-				<a href="mailto:jing.fang.zju@gmail.com"><img src="" alt="email"></a>
+			<div id="name">Jing Fang</div>
+			<div class="flexcontainer flexbalance">
+				<a href="https://github.com/edwinfj/"><img src="images/github-mark-logo.png" alt="Github" class="icon"></a>
+				<a href="https://plus.google.com/+EdwinFang"><img src="images/google-plus-new-icon-logo.png" alt="Google+" class="icon"></a>
+				<a href="https://sg.linkedin.com/in/jfang7"><img src="images/linkedin-icon-logo-vector.png" alt="Linkedin" class="icon"></a>
+				<a href="mailto:jing.fang.zju@gmail.com"><img src="images/google-mail-logo.png" alt="email" class="icon"></a>
 			</div>
 		</div>
 	</div>
@@ -41,21 +41,20 @@
 		<p>This website serves as my personal website, my blog, and also a platform to demonstrate my hobbyist works.</p>
 	</div>
 </section>
+<hr>
 <!-- resources that have helped me -->
 <section id="resource">
 	<h1 title="hope they can help you as well :)">Resource that has helped me</h1>
 	<div class="resourceitem">
-		<h2><a href="https://www.quora.com/How-can-I-prepare-myself-to-be-a-software-engineer-at-Google" target="_blank">How can I prepare myself to be a software engineer at Google?</a></h2>
+		<h2 class="smaller"><a href="https://www.quora.com/How-can-I-prepare-myself-to-be-a-software-engineer-at-Google" target="_blank">How can I prepare myself to be a software engineer at Google?</a></h2>
 		<p>A Quora post about how to become a good software engineer. The author is a googler. Thereefore we can trust him to some extent for professional advice. The post contains the author's perspecitve of what is a good software engineer, and recommendations of resource for academic and non-academic learning. Most of the resource can be found online. One note: part of the post is transformed from Google's "Technical Development Guide".</p>
 	</div>
-	<hr>
 	<div class="resourceitem">
-		<h2><a href="http://www.google.com.sg/about/careers/students/guide-to-technical-development.html">Google's Technical Development Guide</a></h2>
+		<h2 class="smaller"><a href="http://www.google.com.sg/about/careers/students/guide-to-technical-development.html">Google's Technical Development Guide</a></h2>
 		<p>"This guide provides tips and resources to help you develop your technical skills (academically and non-academically) through self-paced, hands-on learning. This guide is intended to target Computer Science students seeking an internship or university grad role at Google."<span class="quoteauthor"> - Google</span></p>
 	</div>
-	<hr>
 	<div class="resourceitem">
-		<h2><a href="http://ocw.mit.edu/courses/find-by-topic/#cat=engineering&subcat=computerscience">MIT Open Courseware</a></h2>
+		<h2 class="smaller"><a href="http://ocw.mit.edu/courses/find-by-topic/#cat=engineering&subcat=computerscience">MIT Open Courseware</a></h2>
 		<p>Nowadays almost every renowned university has its own open courseware. Some special of MIT's is that you don't have to spend a penny to get access his course content. I personally love his "find course by topic" feature. You see what courses to take once you decide which topic to dive into. Yet another outstanding part of this courseware is that the sequence and prerequisit of a course are displayed together with the course. Therefore you know whether you can take this course. If not, you know what courses to take before this one. Upon finish, you know what course to follow next if you are really interested in this topic.</p>
 	</div>
 </section>
