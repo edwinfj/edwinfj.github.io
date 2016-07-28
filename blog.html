@@ -33,6 +33,54 @@
 	<div id="articlecontents" class="col8-l col12-s">
 	<!-- articles, showing in reverse chronological order -->
 	<article>
+		<h1 class="artiletitle centertxt">9 point 10 line puzzle</h1>
+		<div class="titlenote centertxt">
+			<time date="2016-07-04">2016-07-27</time>
+			<div class="tag">
+				<a href="">#math</a>
+			</div>
+		</div>
+		<div>
+		<blockquote class="centertxt">
+		<b><i>
+		Question: "use 9 points to draw 10 lines, each line has at least 3 points".</i></b></blockquote>
+		I saw this question in a manga column whose topic is programmers (I love this column). I am naturally sensitive to space and structures, so I couldn't help thinking about the solution. I didn't have paper by my side at that moment, so I pictured the answers in my mind. I often do this.<br />
+		<br />
+		The first solution that came up to me quickly is img.1. Apparently only 8 lines exist. Then after some brainstorm, I came up a second solution as in img.2. Seems good, but there are 4 intersections in the structure that are not regarded as points as shown in img.3.<br />
+		<div class="imgcentered">
+		<img class="imgframed" border="0" height="265" src="https://4.bp.blogspot.com/-gSVfJz5wJg8/V5g92RAacAI/AAAAAAAALMc/dNmj3kB0pio8vIoNNW7jQu296CI1DPETQCLcB/s640/Screen%2BShot%2B2016-07-27%2Bat%2B12.49.01%2BPM.png" width="640" /></div>
+		Then I realized, the question itself is ambiguous. <b>It does not clearly define what is a point</b>. If we define a point as "intersections of two lines", then my solution is not valid any more.<br />
+		<br />
+		So, to get the right answer, either I prove "intersections of two lines are points" cannot stand, or I come up another solution.<br />
+		<br />
+		To prove "intersections of two lines are points" does not stand, I tried below model.<br />
+		- first, there are 9 points, and 10 lines. Label 10 lines as 0 to 9. The order does not matter since all lines are the same.<br />
+		- second, each point has at least 2 lines<br />
+		- third, each line appears on at least 3 points<br />
+		- fourth, any line combination in a point cannot appear on another point<br />
+		All four conditions have to be met to build the solution.<br />
+		<br />
+		To translate img.2 to the model, I got img.4.<br />
+		<div class="imgcentered">
+		<img class="imgframed" border="0" height="120" src="https://2.bp.blogspot.com/-SlTrA565Y5s/V5hDCwAl3UI/AAAAAAAALMs/xOe4nAvxZ-Y3qse-EzH8a_IrJGP9C8SCwCLcB/s640/Screen%2BShot%2B2016-07-27%2Bat%2B1.11.22%2BPM.png" width="640" /></a></div>
+		Apparently, if we put one line on more points, the fewer points other lines can appear. Therefore, a rule of thumb is: <b>the</b>&nbsp;<b>fewer points one line appears on, the better</b>.<br />
+		Another observation is, since there are so many intersections between the lines, it seems they are more likely to be in the same plane. I don't know how to prove it yet, so just limit the question to 2D. 3D condition can be discussed later.<br />
+		The 2D assumption brings another derivative. <b>If line a crosses line b and line c in a point, and crosses line d in another point, d must crosses either b or c or both on points other than the two mentioned before</b>. This derivative can predict those implicit intersections that shown in img.3.<br />
+		<br />
+		Now combine the rule of thumb and the derivative, here we go.<br />
+		Among the 9 points, 6 of them have 3 lines each, and 3 of them have 4 lines each. The latter 3 points have 12 lines in total, so either 1 line appears 3 time or 2 lines appear twice each. Consider "2 lines appear twice each" condition, name one of the two lines as A. A appear on two points that have 4 lines, and on 1 point that have 3 lines, as shown below.<br />
+		<div class="imgcentered">
+		<img class="imgframed" border="0" height="164" src="https://1.bp.blogspot.com/-2jyOg637Z7M/V5hRDFbZbEI/AAAAAAAALNM/KzCneR-NGrw-un-ov4CSjtMcq3pi6TKkQCLcB/s320/Screen%2BShot%2B2016-07-27%2Bat%2B2.12.44%2BPM.png" width="320" /></a></div>
+		Consider the left point and the right point. There are 3 more lines in the left point. <b>Each of them must have at least 2 intersections with the lines in the right point. All these intersections must be different otherwise different lines will collapse into the same line.</b> Therefore, except the 3 points here, there must be at least 2 + 2 + 2 = 6 extra points, total 9 standalone points now. The "2&nbsp;+ 2&nbsp;+ 2" stands only if each of the 3 lines in the left point has corresponding parallel line respectively in the right point. Even if the "parallel" condition met, the 2 lines in the middle point is impossible not to create more intersections (1 line is possible though). Therefore, the "9 points" requirement in the question is violated.<br />
+		The "1 line appears 3 times" condition can apply the same analysis and get the same conclusion.<br />
+		<br />
+		Therefore, <b>in the 2D world, this question does not hold!</b><br />
+		<br />
+		Now what's left is to find a solution in 3D world, or prove the 9 points must appear in one plane.
+		</div>
+	</article>
+	<hr>
+	<article>
 		<h1 class="artiletitle centertxt">My interpretation of Monty Hall Problem</h1>
 		<div class="titlenote centertxt">
 			<time date="2016-03-04">2016-07-024</time>
@@ -82,25 +130,6 @@
 			If we change, the probability of us winning: the other two doors other than the one we choose in step 1 are one empty&nbsp;+ one with a goat. The probability is 1/3*2 = 2/3.</div>
 	</article>
 	
-	<hr>
-
-	<article class="col8-l col12-s">
-		<h1 class="artiletitle centertxt">Coding is an addictive for me</h1>
-		<div class="titlenote centertxt">
-			<time date="2016-03-04">2016-03-04</time>
-			<div class="tag">
-				<a href="">#coding</a>
-				<a href="">#fun</a>
-				<a href="">#life</a>
-			</div>
-		</div>
-		<p>I finished my work. I closed my computer. I left the office.</p>
-		<p>I had my dinner. I went back home. I opened my Mac.</p>
-		<p>I started coding. Time flys. Three hours passed. I did not notice.</p>
-		<p>I enjoyed every second, but I have to sleep now.</p>
-		<p>Wish I had more hours.</p>
-		<p>It's time looking forward to tomorrow's coming, another wonderful day ahead.</p>
-	</article>
 	</div>
 </section>
 </body>
