@@ -23,14 +23,18 @@
 <!-- section for articles, containing one nav bar to the left -->
 <section id="articlesection" class="flexcontainer">
 	<!-- nav bar, showing tags with #ALL on top -->
-	<nav id="nav1" class="col2-l col2-s">
+	<div class="col3-l col3-s navbar">
+	<nav>
+		<p class="navhead lineAfter">- TOPICS -<p>
 		<ul>
-			<a href=""><li id="allarticles">#ALL</li></a>
-			<a href=""><li id="timeline">#tag1</li></a>
-			<a href=""><li id="topics">#tag2</li></a>
+			<a href=""><li id="allarticles">ALL</li></a>
+			<a href=""><li>math</li></a>
+			<a href=""><li>Monty_Hall_Problem</li></a>
+			<a href=""><li>three_door_puzzle</li></a>
 		</ul>
 	</nav>
-	<div id="articlecontents" class="col8-l col12-s">
+	</div>
+	<div id="articlecontents" class="col9-l col12-s">
 	<!-- articles, showing in reverse chronological order -->
 	<article>
 		<h1 class="artiletitle centertxt">9 point 10 line puzzle</h1>
@@ -48,16 +52,18 @@
 		<br />
 		The first solution that came up to me quickly is img.1. Apparently only 8 lines exist. Then after some brainstorm, I came up a second solution as in img.2. Seems good, but there are 4 intersections in the structure that are not regarded as points as shown in img.3.<br />
 		<div class="imgcentered">
-		<img class="imgframed" border="0" height="265" src="https://4.bp.blogspot.com/-gSVfJz5wJg8/V5g92RAacAI/AAAAAAAALMc/dNmj3kB0pio8vIoNNW7jQu296CI1DPETQCLcB/s640/Screen%2BShot%2B2016-07-27%2Bat%2B12.49.01%2BPM.png" width="640" /></div>
+		<img class="imgframed" border="0" src="https://4.bp.blogspot.com/-gSVfJz5wJg8/V5g92RAacAI/AAAAAAAALMc/dNmj3kB0pio8vIoNNW7jQu296CI1DPETQCLcB/s640/Screen%2BShot%2B2016-07-27%2Bat%2B12.49.01%2BPM.png" /></div>
 		Then I realized, the question itself is ambiguous. <b>It does not clearly define what is a point</b>. If we define a point as "intersections of two lines", then my solution is not valid any more.<br />
 		<br />
 		So, to get the right answer, either I prove "intersections of two lines are points" cannot stand, or I come up another solution.<br />
 		<br />
 		To prove "intersections of two lines are points" does not stand, I tried below model.<br />
-		- first, there are 9 points, and 10 lines. Label 10 lines as 0 to 9. The order does not matter since all lines are the same.<br />
-		- second, each point has at least 2 lines<br />
-		- third, each line appears on at least 3 points<br />
-		- fourth, any line combination in a point cannot appear on another point<br />
+		<ul>
+			<li>first, there are 9 points, and 10 lines. Label 10 lines as 0 to 9. The order does not matter since all lines are the same.</li>
+			<li>second, each point has at least 2 lines</li>
+			<li>third, each line appears on at least 3 points</li>
+			<li>fourth, any line combination in a point cannot appear on another point</li>
+		</ul>
 		All four conditions have to be met to build the solution.<br />
 		<br />
 		To translate img.2 to the model, I got img.4.<br />
@@ -79,7 +85,7 @@
 		Now what's left is to find a solution in 3D world, or prove the 9 points must appear in one plane.
 		</div>
 	</article>
-	<hr>
+	
 	<article>
 		<h1 class="artiletitle centertxt">My interpretation of Monty Hall Problem</h1>
 		<div class="titlenote centertxt">

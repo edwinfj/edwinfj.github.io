@@ -9,7 +9,7 @@
 .col6-l{width:49.99999%;}
 .col7-l{width:58.33333%;}
 .col8-l{width:66.66666%;}
-.col9-l{width:74.99999;}
+.col9-l{width:74.99999%;}
 .col10-l{width:83.33333%;}
 .col11-l{width:91.66666%;}
 .col12-l{width:99.99999%;}
@@ -17,10 +17,14 @@
 /* section for generic styling, usually as styling trigger */
 header{height:400px;}
 header > h1 {margin: 90px auto 40px;}
-nav{display:block;}
-nav a{background-color:rgba(25,51,77,0.7);color:rgba(255,255,255,0.9);border:1px solid white;}
-nav a:hover{box-shadow:0px 0px 5px 2px #ffffff inset;}
+nav {text-align:center; background-color:#ffffff;}
+nav ul {padding:0;margin:0;}
+nav a {display:block; }
+nav li {list-style-type:none; padding:0.3em 0;}
+nav a:hover{color:#a0a0a0; font-weight: bold;}
 
 /* section for specified styling */
-#articlesection{padding:0;}
-#articlecontents{padding: 20px 1%;margin:auto;}
+.navbar {display:block; justify-content: center; padding:20px; background-color:#f0f0f0;}
+.navhead {font-weight: bold; padding: 0.5em 0;}
+#articlesection {padding:0;}
+#articlecontents {margin:auto;}

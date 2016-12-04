@@ -24,7 +24,7 @@ body {font-family: open_sans, sans_serif; line-height: 1.5; margin:0;}
 .col6-s{width:49.99999%;}
 .col7-s{width:58.33333%;}
 .col8-s{width:66.66666%;}
-.col9-s{width:74.99999;}
+.col9-s{width:74.99999%;}
 .col10-s{width:83.33333%;}
 .col11-s{width:91.66666%;}
 .col12-s{width:99.99999%;}
@@ -36,29 +36,27 @@ body {font-family: open_sans, sans_serif; line-height: 1.5; margin:0;}
 .clearfloat::after{content:""; clear:both;}
 .flexcontainer{display:flex; flex-wrap:wrap;}
 .flexcolumn{flex-direction:column;}
-.flexcenter{justify-content:center;}
+.flexcenter{justify-content:center; align-items:center; align-content:center;}
 .flexbottom{align-items:baseline;}
 .flexbalance{justify-content:space-around;}
 .centertxt{text-align:center;}
 .smaller{font-size:1.1em;}
 .dashhr{width:80%;border-style:dashed;}
-.imgcentered{clear: both; text-align: center;margin:1em auto;}
+.imgcentered{clear: both; text-align: center; margin:1em auto;}
 .imgframed{box-shadow:0px 0px 2px 1px #777777;}
 
 /* section for specified styling, usually object oriented */
-ul {padding:0;margin:0;}
-ul a{display:block;text-align:center;}
-li{list-style-type:none;font-weight:bold;padding:5px 0;}
-header {text-align: center; height: 200px;background:url("../images/sailing-boat.jpg") center center/cover no-repeat;margin:0;padding:30px 0;}
+header {text-align: center; height: 200px; background:url("../images/sailing-boat.jpg") center center/cover no-repeat;margin:0;padding:30px 0;}
 header > * {margin: auto;}
 header > h1 {margin: 20px auto 10px;color:rgba(255,255,255,0.9);text-shadow:0px 0px 10px #222222;}
 header.homepage{-webkit-animation:fadein 3s;animation:fadein 3s;}
 section{padding:40px 5%;}
 h1,h2,h3,h4,h5,h6,p {margin:8px 0;}
-nav{display:none;}
+.navbar {display:none;}
 a{text-decoration:none;}
-article{margin:1em 0 1em;}
+article{padding: 3em 8% 7em;}
 
+#bannerlist li{list-style-type: none;font-weight:bold; padding:5px 0;}
 #bannerlist a{font-size: 1.5em;background-color:rgba(220,220,220,0.4);border-right:2px solid rgba(255,255,255,0.9);}
 #bannerlist a:last-child{border-right:none;}
 #bannerlist a:link{color:rgba(255,255,255,0.9);}
@@ -66,10 +64,8 @@ article{margin:1em 0 1em;}
 #bannerlist a:visited{color:rgba(255,255,255,0.9);}
 .avatarimg{border-radius:50%;width:90%;max-width:210px;margin:5px auto;}
 #name{margin:0 0 10px;}
-#paragraph{justify-content:flex-start;}
-#paragraph p{margin:10px 5%;}
+#bio {padding:10px 4%; background-color:#f2f2f2;}
 #resource > h1{margin:0 0 10px;text-align:center;}
-#articlecontents hr{margin:4em auto 3em;}
 .resourceitem{padding:10px 0;}
 .resourceitem a:link{color:#445588;}
 .resourceitem a:hover{box-shadow:0px 0px 5px 2px #777777;border-radius:2px;color:#445588;}
@@ -78,7 +74,7 @@ article{margin:1em 0 1em;}
 
 .skillhead{width:140px;font-weight:bold;}
 .skillbody{font-style:italic;}
-.projectitem{margin:30px 5%;}
+.projectitem{padding:2em 5% 4em;}
 .tag, .tag a{display:inline-block;}
 .titlenote{margin:auto auto 1em;}
 .titlenote time{margin:0 30px 0 0;}
@@ -93,3 +89,4 @@ article{margin:1em 0 1em;}
 .svg_icon_gplus:hover {background-color:rgb(224, 100, 100);}
 .svg_icon_github {border-radius:16px;}
 .svg_icon_github:hover {background-color:#f0f0f0;}
+.lineAfter, .projectitem, article {border-bottom:1px solid #f0f0f0;}
