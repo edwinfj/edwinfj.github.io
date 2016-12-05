@@ -1,3 +1,10 @@
+// set header contents
+$('header').html('<h1>Welcome to my Novoland</h1>' +
+	'<ul id="bannerlist" class="col12-s col6-l clearfloat nopaddinglist">' +
+	'<a href="index.html" class="col4-s col4-l"><li>Home</li></a>' +
+	'<a href="demo.html" class="col4-s col4-l"><li>Demo</li></a>' +
+	'<a href="blog.html" class="col4-s col4-l"><li>Blog</li></a></ul>');
+
 $(document).ready(function() {
 	// open all hyperlinks in the new tab, except links in the banner and blog
 	$('#intro a, #olcourse a, .projectitem a').attr('target', '_blank');
@@ -7,13 +14,6 @@ $(document).ready(function() {
 	$('.olcourseitem a').attr('title', 'course link');
 	$('.difficulty').attr('class', 'col2-l col12-s difficulty');
 	$('.recommend').attr('class', 'col3-l col12-s recommend');
-
-	// set header contents
-	$('header').html('<h1>Welcome to my Novoland</h1>' +
-		'<ul id="bannerlist" class="col12-s col6-l clearfloat nopaddinglist">' +
-		'<a href="index.html" class="col4-s col4-l"><li>Home</li></a>' +
-		'<a href="demo.html" class="col4-s col4-l"><li>Demo</li></a>' +
-		'<a href="blog.html" class="col4-s col4-l"><li>Blog</li></a></ul>');
 
 	// set repo link images
 	$('.repolink a').html('<img src="images/github.svg" alt="repository" title="repository" class="svg_icon svg_icon_github">')
