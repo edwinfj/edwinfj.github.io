@@ -1,10 +1,4 @@
 $(document).ready(function() {
-	// set header contents
-	$('header').html('<h1>Welcome to my Novoland</h1>' +
-	'<ul id="bannerlist" class="col12-s col6-l clearfloat nopaddinglist">' +
-	'<a href="index.html" class="col4-s col4-l"><li>Home</li></a>' +
-	'<a href="demo.html" class="col4-s col4-l"><li>Demo</li></a>' +
-	'<a href="blog.html" class="col4-s col4-l"><li>Blog</li></a></ul>');
 	// open all hyperlinks in the new tab, except links in the banner and blog
 	$('#intro a, #olcourse a, .projectitem a').attr('target', '_blank');
 	// asign attributes to olcourseitem children
