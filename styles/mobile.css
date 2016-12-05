@@ -65,11 +65,12 @@ article{padding: 3em 8% 7em;}
 #name{margin:0 0 10px;}
 #bio {padding:10px 4%; background-color:#f2f2f2;}
 #olcourse > h1{margin:0 0 10px;text-align:center;}
-.olcourseitem {padding:10px 3%;}
-.olcourseitem h2 {font-size: 1em;}
-.olcourseitem a, .demoLink {color:#2040a0;}
-.olcourseitem a:hover, .demoLink:hover {color:#6080a0;}
-.olcoursedescription {color:#350d6d; font-size: 0.9em;}
+.olcourseintro {margin: 0 0 1em;}
+.olcourseitem {margin:0 3%; padding:0.7em 0 1em;}
+.olcourseitem h2 {font-size: 1em; line-height:1;}
+#olcourse a, .demoLink {color:#2040a0;}
+#olcourse a:hover, .demoLink:hover {color:#6080a0;}
+.olcoursedescription {color:#8c6e6a; font-size: 0.9em;}
 .difficulty, .recommend {color:#0667d6;}
 .nopaddinglist {padding:0;}
 
@@ -91,4 +92,4 @@ article{padding: 3em 8% 7em;}
 .svg_icon_gplus:hover {background-color:rgb(224, 100, 100);}
 .svg_icon_github {border-radius:16px;}
 .svg_icon_github:hover {background-color:#f0f0f0;}
-.lineAfter, .projectitem, article {border-bottom:1px solid #f0f0f0;}
+.lineAfter, .projectitem, .olcourseitem, article {border-bottom:1px solid #f0f0f0;}
