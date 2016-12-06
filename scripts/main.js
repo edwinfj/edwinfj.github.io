@@ -15,7 +15,7 @@ $(document).ready(function() {
 	$('.projectitem > div').attr('class', 'flexcontainer flexbottom');
 	$('.projectitem h2').attr('class', 'col4-l col12-s');
 	$('.repolink').attr('class', 'repolink col4-l col6-s');
-	$('.titlenote').attr('class', 'titlenote col4-l col6-s');
+	$('.projectitem .titlenote').attr('class', 'titlenote col4-l col6-s');
 
     // convert difficulty level to corresponding visual effect
     var level = ['beginner', 'intermediate', 'advanced'];
