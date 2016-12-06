@@ -68,8 +68,8 @@ article{padding: 3em 8% 7em;}
 .olcourseintro {margin: 0 0 1em;}
 .olcourseitem {margin:0 3%; padding:0.7em 0 1em;}
 .olcourseitem h2 {font-size: 1em; line-height:1;}
-#olcourse a, .demoLink {color:#2040a0;}
-#olcourse a:hover, .demoLink:hover {color:#6080a0;}
+#olcourse a, .demoLink, #bio a {color:#2040a0;}
+#olcourse a:hover, .demoLink:hover, #bio a:hover {color:#6080a0;}
 .olcoursedescription {color:#8c6e6a; font-size: 0.9em;}
 .difficulty, .recommend {color:#0667d6;}
 .nopaddinglist {padding:0;}
