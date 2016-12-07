@@ -2,20 +2,20 @@ $(document).ready(function() {
 	// open all hyperlinks in the new tab, except links in the banner and blog
 	$('#intro a, #olcourse a, .projectitem a').attr('target', '_blank');
 	// asign attributes to olcourseitem children
-	$('.olcourseitem > div').attr('class', 'flexcontainer flexbottom');
-	$('.olcourseitem h2').attr('class', 'col7-l col12-s');
+	$('.olcourseitem > div').addClass('flexcontainer flexbottom');
+	$('.olcourseitem h2').addClass('col7-l col12-s');
 	$('.olcourseitem a').attr('title', 'course link');
-	$('.difficulty').attr('class', 'col2-l col12-s difficulty');
-	$('.recommend').attr('class', 'col3-l col12-s recommend');
+	$('.difficulty').addClass('col2-l col12-s');
+	$('.recommend').addClass('col3-l col12-s recommend');
 
 	// set repo link images
 	$('.repolink a').html('<img src="images/github.svg" alt="repository" title="repository" class="svg_icon svg_icon_github">')
 	// assign attributes to demo project items
 	$('.demoLink').attr('title', 'demo');
-	$('.projectitem > div').attr('class', 'flexcontainer flexbottom');
-	$('.projectitem h2').attr('class', 'col4-l col12-s');
-	$('.repolink').attr('class', 'repolink col4-l col6-s');
-	$('.projectitem .titlenote').attr('class', 'titlenote col4-l col6-s');
+	$('.projectitem > div').addClass('flexcontainer flexbottom');
+	$('.projectitem h2').addClass('col4-l col12-s');
+	$('.repolink').addClass('col4-l col6-s');
+	$('.projectitem .titlenote').addClass('col4-l col6-s');
 
     // convert difficulty level to corresponding visual effect
     var level = ['beginner', 'intermediate', 'advanced'];
@@ -28,5 +28,23 @@ $(document).ready(function() {
         $(".recommend:contains("+item+")").html("recommend " + "&#x2605;".repeat(item) + "&#x2606;".repeat(5 - item));        
     });
 
-    
+    // when the tag is clicked, filter in the articles that has clicked tag
+    $(".tag").on("click", function() {
+    	var taghtml = $(this).html();
+    	switch (taghtml) {
+    		case 'ALL':
+    			$('article.hidearticle').removeClass('hidearticle');
+    			break;
+    		default:
+    			// console.log(taghtml);
+    			// var tagelement = $('<span class="tag">'+taghtml+'<\\span');
+    			// console.log(tagelement);
+    			$('article:not(.hidearticle)').addClass('hidearticle');
+    			$('article')
+    				.filter(function() {
+    					return $(this).children('div.titlenote').children('span.tag:contains(' + taghtml +')').length > 0;
+    				})
+    				.removeClass('hidearticle');
+    	}
+    });
 });
