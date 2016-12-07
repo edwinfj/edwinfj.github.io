@@ -18,10 +18,8 @@
 header{height:400px;}
 header > h1 {margin: 90px auto 40px;}
 nav {text-align:center; background-color:#ffffff;}
-nav ul {padding:0;margin:0;}
-nav a {display:block; }
-nav li {list-style-type:none; padding:0.3em 0;}
-nav a:hover{color:#a0a0a0; font-weight: bold;}
+nav ul {padding:0; margin:0;}
+nav li {list-style-type:none; padding: 0.3em 0;}
 
 /* section for specified styling */
 .navbar {display:block; justify-content: center; padding:20px; background-color:#f0f0f0;}

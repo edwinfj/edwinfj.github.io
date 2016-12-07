@@ -68,8 +68,10 @@ article{padding: 3em 8% 7em;}
 .olcourseintro {margin: 0 0 1em;}
 .olcourseitem {margin:0 3%; padding:0.7em 0 1em;}
 .olcourseitem h2 {font-size: 1em; line-height:1;}
-#olcourse a, .demoLink, #bio a {color:#2040a0;}
-#olcourse a:hover, .demoLink:hover, #bio a:hover {color:#6080a0;}
+#olcourse a, .demoLink, #bio a, .tag {color:#2040a0;}
+#olcourse a:hover, .demoLink:hover, #bio a:hover {color:#a0a0a0;}
+span.tag {padding: 0 10px;}
+.tag:hover {color:#a0a0a0; font-weight: bold; cursor: pointer;}
 .olcoursedescription {color:#8c6e6a; font-size: 0.9em;}
 .difficulty, .recommend {color:#0667d6;}
 .nopaddinglist {padding:0;}
@@ -78,10 +80,8 @@ article{padding: 3em 8% 7em;}
 .skillbody{font-style:italic;}
 .projectitem{padding:2em 5% 4em;}
 .projectitem h2 {font-size: 1.2em;}
-.tag, .tag a{display:inline-block;}
 .titlenote{margin:auto auto 1em; color:#777777;}
 .titlenote time{margin:0 30px 0 0;}
-.tag a{margin:0 3px;}
 .svg_space {border:0; box-shadow:none; display:inline-block; padding:0 7px; vertical-align:middle;}
 .svg_icon {border-radius: 4px; display: inline-block; height:32px; line-height: 32px; opacity: 1; width: 32px;}
 .svg_icon_linkedin {background-color: rgb(0, 123, 181);}
@@ -92,4 +92,5 @@ article{padding: 3em 8% 7em;}
 .svg_icon_gplus:hover {background-color:rgb(224, 100, 100);}
 .svg_icon_github {border-radius:16px;}
 .svg_icon_github:hover {background-color:#f0f0f0;}
-.lineAfter, .projectitem, .olcourseitem, article {border-bottom:1px solid #f0f0f0;}
+.lineAfter, .projectitem, .olcourseitem {border-bottom:1px solid #f0f0f0;}
+article {border-bottom: 5px solid #f0f0f0; border-top: 5px solid #f0f0f0;}
