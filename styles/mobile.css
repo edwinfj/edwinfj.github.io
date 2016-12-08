@@ -55,6 +55,7 @@ h1,h2,h3,h4,h5,h6,p {margin:8px 0;}
 .navbar {display:none;}
 a{text-decoration:none;}
 article{padding: 3em 8% 7em;}
+article img {max-width: 100%; max-height: 100%; object-fit: contain;}
 
 #bannerlist li{list-style-type:none; font-weight:bold; padding:5px 0;}
 #bannerlist a{font-size: 1.5em;background-color:rgba(220,220,220,0.4);border-right:2px solid rgba(255,255,255,0.9);}
