@@ -46,7 +46,7 @@ body {font-family: open_sans, sans_serif; line-height: 1.5; margin:0;}
 .hidearticle {display: none;}
 
 /* section for specified styling, usually object oriented */
-header {text-align: center; height: 200px; background:url("../images/sailing-boat.jpg") center center/cover no-repeat;margin:0;padding:30px 0;}
+header {text-align: center; height: 200px; background: #696969 center center/cover no-repeat;margin:0;padding:30px 0;}
 header > * {margin: auto;}
 header > h1 {margin: 20px auto 10px;color:rgba(255,255,255,0.9);text-shadow:0px 0px 10px #222222;}
 header.homepage{-webkit-animation:fadein 3s;animation:fadein 3s;}
