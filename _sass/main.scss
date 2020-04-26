@@ -1,0 +1,241 @@
+/* define some global parameters */
+body {
+	font-family: open_sans, sans_serif;
+}
+pre.highlight, code.highlighter-rouge {
+	font-family: "Lucida Console", "Courier New", "Monaco", "Spoqa Han Sans", monospace;
+    padding: var(--code-padding);
+    margin: var(--code-margin);
+    font-size: var(--code-font-size);
+    background-color: var(--code-background-color);
+    border-radius: var(--code-border-radius);
+    overflow-x: auto;
+}
+
+/* site specific styles */
+.pan-layout {
+	display: block;
+	width: var(--pan-layout-width);
+	height: var(--pan-layout-height);
+}
+
+.pan-layout-left {
+	display: block;
+	position: var(--pan-layout-left-position);
+	left: var(--pan-layout-left-left);
+	width: var(--pan-layout-left-width);
+	height: var(--pan-layout-left-height);
+	background: var(--pan-layout-left-background);
+}
+
+#pan-layout-left-blank1 {
+	display: var(--pan-layout-left-blank-display);
+	height: 100px;
+}
+
+.pan-layout-left-avatar {
+	display: var(--pan-layout-left-avatar-display);	
+	justify-content: center;
+}
+
+.pan-layout-left-avatar img {
+	width: var(--avatar-image-width);
+	height: var(--avatar-image-height);
+	border-radius: 50%;
+}
+
+#pan-layout-left-blank2 {
+	display: var(--pan-layout-left-blank-display);
+	height: 1em;
+}
+
+.pan-layout-left-nav {
+}
+
+#navigation {
+	display: flex;
+	justify-content: space-evenly;
+}
+
+#navigation a {
+	color: var(--navigation-a-color);
+	font-weight: bold;
+}
+
+#pan-layout-left-blank3 {
+	display: var(--pan-layout-left-blank-display);
+	height: 2em;
+}
+
+#pan-layout-left-breakline {
+	display: var(--pan-layout-left-breakline-display);
+	border-bottom: var(--pan-layout-left-breakline-border-bottom);
+}
+
+#pan-layout-left-blank4 {
+	display: var(--pan-layout-left-blank-display);
+	height: 2em;
+}
+
+.pan-layout-left-rec {
+	display: var(--pan-layout-left-rec-display);
+}
+
+.pan-layout-left-rec h1 {
+	font-size: 1em;
+	margin: 0 0 0 1em;
+	color: var(--rec-h1-color);
+}
+
+#recommendation {
+	margin: 0.4em 0;
+	padding: 0 3% 0 15%;
+	overflow-y: auto;
+}
+
+.rec-title {
+	color: var(--rec-title-color);
+}
+
+.rec-title a {
+	text-decoration: none;
+	color: var(--rec-title-a-color);
+	padding: 0 3px;
+	border-radius: 3px;
+}
+
+.rec-title a:hover {
+	background-color: var(--main-tag-hover-background-color);
+	color: var(--post-title-hover-color);
+}
+
+.pan-layout-left-tags {
+	display: var(--pan-layout-left-tags-display);
+}
+
+#taglist {
+	margin: 0;
+	padding: 0 15px;
+	overflow-y: auto;
+}
+
+#taglist li {
+	display: inline-block;
+	list-style-type: none;
+	padding: 2px 1px;
+}
+
+.taglist-tag a {
+	text-decoration: none;
+	color: white;
+	padding: 0 2px;
+	border-radius: 3px;
+	background-color: var(--taglist-tag-a-background-color);
+}
+
+.taglist-tag a:hover {
+	background-color: var(--main-tag-hover-background-color);
+	color: var(--post-title-hover-color);
+}
+
+#pan-layout-left-blank5 {
+	display: var(--pan-layout-left-blank-display);
+	height: 20px;
+}
+
+.pan-layout-right {
+	display: block;
+	position: var(--pan-layout-right-position);
+	left: var(--pan-layout-right-left);
+	width: var(--pan-layout-right-width);
+}
+
+.pan-layout-right-top {
+	display: block;
+	height: 3em;
+}
+
+.pan-layout-right-middle {
+	display: flex;
+	justify-content: center;
+}
+
+#main {
+	width: var(--main-width);
+}
+
+#main a {
+	text-decoration: none;
+}
+
+.excerpt-post {
+	padding-bottom: 2em;
+	border-bottom: var(--excerpt-post-border-bottom);
+}
+
+.post-title a {
+	color: black;
+}
+
+.post-title a:hover {
+	color: var(--post-title-hover-color);
+}
+
+#main time {
+	color: var(--main-time-color);
+	font-size: 0.8em;
+	font-weight: 300;
+	margin: 0 3px;
+}
+
+#main .tag > a {
+	background-color: var(--main-tag-background-color);
+	color: var(--main-tag-color);
+	font-size: 0.8em;
+	font-weight: 300;
+	padding: 0 2px;
+	border-radius: 3px;
+}
+
+#main .tag > a:hover {
+	background-color: var(--main-tag-hover-background-color);
+	color: var(--post-title-hover-color);
+}
+
+article a {
+	color: var(--article-link-color);
+}
+
+article a:hover {
+	color: var(--post-title-hover-color);
+}
+
+.post-title {
+	font-size: var(--post-title-font-size);
+	margin: var(--post-title-margin);
+}
+
+article h2 {
+	padding-top: var(--article-h2-padding-top);
+}
+
+.archive a {
+	color: var(--article-link-color);
+}
+
+.archive a:hover {
+	color: var(--post-title-hover-color);
+}
+
+.about a {
+	color: var(--article-link-color);
+}
+
+.about a:hover {
+	color: var(--post-title-hover-color);
+}
+
+.pan-layout-right-bottom {
+	display: block;
+	margin: 7em 0;
+}

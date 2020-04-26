@@ -1,0 +1,5 @@
+<ul id="taglist">
+	{% for tag in site.tags %}
+		<li class="taglist-tag"><a href="/tag/{{tag[0]}}">#{{tag[0]}}</a></li>
+	{% endfor %}
+</ul>

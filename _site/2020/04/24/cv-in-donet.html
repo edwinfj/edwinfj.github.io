@@ -1,0 +1,257 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Condition Variable in .NET Framework</title>
+    <link rel="stylesheet" type="text/css" href="/assets/css/default.css">
+	<script type="text/javascript" src="/assets/js/jquery-3.1.1.min.js"></script>
+	<script type="text/javascript" src="/assets/js/main.js"></script>
+    <link type="application/atom+xml" rel="alternate" href="http://0.0.0.0:4000/feed.xml" title="Edwin's Novoland" />
+    <!-- Begin Jekyll SEO tag v2.6.1 -->
+<title>Condition Variable in .NET Framework | Edwin’s Novoland</title>
+<meta name="generator" content="Jekyll v4.0.0" />
+<meta property="og:title" content="Condition Variable in .NET Framework" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Motivation As a C++ programmer coming to the C# world, while writing multi-thread programs, the thing I miss the most is condition variable. I googled for a while trying to find a built-in counterpart or a crafted solution in .NET Framework. I failed. The top results returned were either wrong statements, or a design that lacked generalization." />
+<meta property="og:description" content="Motivation As a C++ programmer coming to the C# world, while writing multi-thread programs, the thing I miss the most is condition variable. I googled for a while trying to find a built-in counterpart or a crafted solution in .NET Framework. I failed. The top results returned were either wrong statements, or a design that lacked generalization." />
+<link rel="canonical" href="http://0.0.0.0:4000/2020/04/24/cv-in-donet.html" />
+<meta property="og:url" content="http://0.0.0.0:4000/2020/04/24/cv-in-donet.html" />
+<meta property="og:site_name" content="Edwin’s Novoland" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2020-04-24T00:00:00+00:00" />
+<script type="application/ld+json">
+{"headline":"Condition Variable in .NET Framework","dateModified":"2020-04-24T00:00:00+00:00","datePublished":"2020-04-24T00:00:00+00:00","mainEntityOfPage":{"@type":"WebPage","@id":"http://0.0.0.0:4000/2020/04/24/cv-in-donet.html"},"url":"http://0.0.0.0:4000/2020/04/24/cv-in-donet.html","description":"Motivation As a C++ programmer coming to the C# world, while writing multi-thread programs, the thing I miss the most is condition variable. I googled for a while trying to find a built-in counterpart or a crafted solution in .NET Framework. I failed. The top results returned were either wrong statements, or a design that lacked generalization.","@type":"BlogPosting","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+  </head>
+  <body>
+  	<section class="pan-layout">
+		<section class="pan-layout-left">
+			<div id="pan-layout-left-blank1"></div>
+			<div class="pan-layout-left-avatar">
+				<img class="" src="/assets/images/GintamaAvatar.png" alt="Avatar">
+			</div>
+			<div id="pan-layout-left-blank2"></div>
+			<div class="pan-layout-left-nav">
+				<nav id="navigation">
+
+	<a href="/">
+		Home
+	</a>
+
+	<a href="/archive.html">
+		Archive
+	</a>
+
+	<a href="/about.html">
+		About
+	</a>
+
+</nav>
+
+			</div>
+			<div id="pan-layout-left-blank3"></div>
+			<div id="pan-layout-left-breakline"></div>
+			<div id="pan-layout-left-blank4"></div>
+			
+				<div class="pan-layout-left-rec">
+					<h1>Related posts</h1>
+<ul id="recommendation">
+	
+		
+			
+		
+			
+		
+			
+		
+			
+		
+	
+</ul>
+				</div>
+			
+			<div id="pan-layout-left-blank5"></div>
+		</section>
+		<section class="pan-layout-right">
+			<div class="pan-layout-right-top"></div>
+			<div class="pan-layout-right-middle">
+				<div id="main">
+<article>
+	<h1 class="post-title">Condition Variable in .NET Framework</h1>
+	<div>
+		<time datetime="2020-04-24T00:00:00+00:00">04-24-2020</time>
+
+	<span class="tag"><a href="/tag/condition variable">#condition variable</a></span>
+
+	<span class="tag"><a href="/tag/.NET Framework">#.NET Framework</a></span>
+
+	<span class="tag"><a href="/tag/multi-thread">#multi-thread</a></span>
+
+	<span class="tag"><a href="/tag/lock">#lock</a></span>
+
+	</div>
+	<h2 id="motivation">Motivation</h2>
+
+<p>As a C++ programmer coming to the C# world, while writing multi-thread programs, the thing I miss the most is <a href="https://en.cppreference.com/w/cpp/thread/condition_variable">condition variable</a>.</p>
+
+<p>I googled for a while trying to find a built-in counterpart or a crafted solution in .NET Framework. I failed. The top results returned were either wrong statements, or a design that lacked generalization.
+<!--more--></p>
+
+<h2 id="minimal-requirements-for-the-condition-variable">Minimal Requirements For The Condition Variable</h2>
+
+<p>A common use case for the condition variable is:</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    CV queueOne, queueTwo;
+    ...
+    // thread 1
+    lock.acquire();
+    updateStates1();
+    while (!predicate1()) {
+        queueOne.wait(lock);
+    }
+    updateStates2();
+    lock.release();
+    ...
+    lock.acquire();
+    updateStates3();
+    queueTwo.signal();
+	lock.release();
+
+    // thread 2
+    lock.acquire();
+    updateStates4();
+    while(!predicate2()) {
+        queueTwo.wait(lock);
+    }
+    updateStates5();
+    lock.release();
+    ...
+    lock.acquire();
+    updateStates6();
+    queueOne.signal();
+    lock.release();
+</code></pre></div></div>
+
+<p>To apply above code pattern, the requirements listed below need to be fulfilled:</p>
+
+<ol>
+  <li>Each condition variable instance has its own waiting queue.</li>
+  <li>The condition variable should at least support below three interfaces:
+    <ul>
+      <li><code class="highlighter-rouge">void wait(lock)</code>: the caller thread releases the lock and waits in the condition variable’s waiting queue.</li>
+      <li><code class="highlighter-rouge">void signal()</code>: one of the waiting thread in the condition variable’s waiting queue will be waken up and ready to run.</li>
+      <li><code class="highlighter-rouge">void broadcast()</code>: all the waiting threads in the condition variable’s waiting queue will be waken up and ready to run.</li>
+    </ul>
+  </li>
+  <li>A waiting thread on the condition variable’s waiting queue is bound to wake up after some signal() calls.</li>
+  <li>The condition variable is stateless. I.e., if no wait() has been called, the signal() called currently will not change any thread’s ready status.</li>
+</ol>
+
+<h2 id="synchronization-primitives-in-net-framework">Synchronization Primitives in .NET Framework</h2>
+<p>.NET Framework 4.8 provides many synchronization primitives in <a href="https://docs.microsoft.com/en-us/dotnet/api/system.threading?view=netframework-4.8"><em>System.Threading</em></a> namespace, such as WaitHandle class and its derivations (Mutex, Semaphore, AutoResetEvent, etc.), Monitor, SpinLock, ReaderWriterLock.</p>
+
+<p>WaitHandle and its derivations are all stateful. That means a signal() equivalent API call will affect the next wait() call. This breaks requirement 4. Besides, since the state is managed by WaitHandle class, there is no <code class="highlighter-rouge">void wait(lock)</code> equivalent API.</p>
+
+<h3 id="the-common-pitfall-monitor-as-condition-variable">The Common Pitfall: Monitor as Condition Variable</h3>
+
+<p>Some people stated that <a href="https://docs.microsoft.com/en-us/dotnet/api/system.threading.monitor?view=netframework-4.8"><em>System.Threading.Monitor</em></a> is a counterpart to the condition variable.</p>
+
+<p>I don’t think so.</p>
+
+<p>Indeed, Monitor is stateless. However, it is a static class and it does not have its own waiting queue. Applying Monitor to the code pattern above, it would be like:</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    // thread 1
+    Monitor.Enter(obj)
+    updateStates1();
+    while (!predicate1()) {
+    	Monitor.Wait(obj);
+    }
+    updateState2();
+    Monitor.Exit(obj);
+    ...
+    Monitor.Enter(obj);
+    updateState3();
+    Monitor.Pulse(obj);
+    Monitor.Exit(obj);
+
+    // thread 2
+    Monitor.Enter(obj);
+    updateStates4();
+    while (!predicate2()) {
+    	Monitor.Wait(obj);
+    }
+    updateState5();
+    Monitor.Exit(obj);
+    ...
+    Monitor.Enter(obj);
+    updateState6();
+    Monitor.Pulse(obj);
+    Monitor.Exit(obj);
+</code></pre></div></div>
+<p>The problem is, the states maintained in updateStatesX() need to be synchronized. Therefore I have to use one lock in thread 1 and thread 2. Monitor.Wait(obj) calls on the object it acquired before, and waits on that object, therefore both thread 1 and thread 2 are waiting on obj. When another thread calls Monitor.Pulse(obj), either thread 1 and thread 2 could be woken up.</p>
+
+<p>It failed to implement the code pattern above.</p>
+
+<h2 id="implement-condition-variables-with-semaphores">Implement Condition Variables with Semaphores</h2>
+<p>Luckily, <a href="http://birrell.org/andrew/papers/ImplementingCVs.pdf">Andrew Birrell has studied this topic back in 2003</a>. It’s feasible to implement condition variables with semaphores. Apply his solution to .NET Framework, it would be like:</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    class CV {
+        Queue&lt;SemaphoreSlim&gt; waitQueue = new Queue&lt;SemaphoreSlim&gt;();
+
+        // make sure the calling thread has acquired lockObj
+        void wait(ref object lockObj) {
+        	SemaphoreSlim s = new SemaphoreSlim(0);
+        	waitQueue.Enqueue(s);
+        	Monitor.Exit(lockObj);
+        	s.Wait();
+        	Monitor.Enter(lockObj);
+        }
+
+        // make sure the calling thread has acquired lockObj
+        void signal() {
+        	if (waitQueue.Count != 0) {
+        		s = waitQueue.Dequeue();
+        		s.Release();
+        	}
+        }
+
+        // make sure the calling thread has acquired lockObj
+        void broadcast() {
+        	while (waitQueue.Count != 0) {
+        		s = waitQueue.Dequeue();
+        		s.Release();
+        	}
+        }
+    }
+</code></pre></div></div>
+
+<p>Each wait() makes the calling thread to wait in a semaphore’s waiting queue. All the semaphores of a condition variable are stored in a queue, which becomes the condition variable’s very own waiting queue. The maximum size of the queue is the maximum possible number of threads in the process.</p>
+
+<p>The queue becomes a global state. However, since when wait(), signal() or broadcast() is called a lock has been acquired, no more lock is required to synchronize the state of the queue.</p>
+
+<p>I chose to use SemaphoreSlim because I don’t need synchronization cross process boundaries. You can adapt the code to your own needs.</p>
+
+<p>Make sure wrap the code in a try block, and release the lock in the finally block.</p>
+
+<h3 id="performance-improvement">Performance Improvement</h3>
+<p>Since wait(), signal() and broadcast() are in the sync body, each of them could become the performance bottleneck. Based on my experience, object generation and garbage collection is time consuming in .NET Framework. It’s better to avoid frequent <code class="highlighter-rouge">new</code> in the sync body, as in wait().</p>
+
+<p>Instead of creating a new semaphore and discard it in each wait, we could allocate semaphores beforehand and store them in a bounded queue. In each wait(), the semaphore on the front of the queue is used. Make sure the bounded queue size is large enough to feed all the threads.</p>
+
+<h2 id="a-second-thought-on-net-synchronization-primitives">A Second Thought on .NET Synchronization Primitives</h2>
+
+<p>The most commonly used synchronization models are producer/consumer, reader/writer and barrier.</p>
+
+<p>As C++ programmer, I would choose to implement them using condition variables and mutexes. In .NET, there are <em>Barrier</em> and <em>ReaderWriterLock</em> classes. The producer/consumer could be implemented using other primitives with care.</p>
+
+<p>I guess the reason that .NET does not have condition variable is that the it tries to discourage users from implementing synchronization models from scratch. Multi-threaded code is notorious to be bug prone and difficult to debug. Users better leave them to more experienced teams.</p>
+
+<p>Well, however, it’s never guaranteed that all use cases can be covered by a constant number of synchronization models. Given the benefits of condition variables, giving it up would result in a much more difficult situation when the synchronization models provided by the library does not cover the use case.</p>
+
+
+</article>
+</div>
+			</div>
+			<div class="pan-layout-right-bottom"></div>
+		</section>
+	</section>
+  </body>
+</html>

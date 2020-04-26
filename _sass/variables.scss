@@ -1,0 +1,89 @@
+:root {
+	--code-padding: .1em .2em;
+	--code-margin: 0;
+	--code-font-size: 85%;
+	--code-background-color: rgba(27,31,35,.05);
+	--code-border-radius: 3px;
+
+	--pan-layout-width: 100vw;
+	--pan-layout-height: 100vh;
+
+	--pan-layout-left-position: static;
+	--pan-layout-left-width: 100vw;
+	--pan-layout-left-height: auto;
+	--pan-layout-left-left: 0px;
+	--pan-layout-left-background: #54bc75;
+
+	--pan-layout-left-blank-display: none;
+
+	--pan-layout-left-avatar-display: none;
+
+	--pan-layout-left-breakline-display: none;
+	--pan-layout-left-breakline-border-bottom: 2px solid #7fdd9d; 
+
+	--pan-layout-left-rec-display: none;
+
+	--pan-layout-left-tags-display: none;
+
+	--pan-layout-right-position: static;
+	--pan-layout-right-left: 0px;
+	--pan-layout-right-width: 100vw;
+
+	--pan-layout-right-middle-width: 400px;
+
+	--taglist-tag-a-background-color: #07402d;
+
+	--main-width: 80%;
+	--main-time-color: #868e96;
+	--main-tag-background-color: #e9ecef;
+	--main-tag-color: #343a40;
+	--main-tag-hover-background-color: #cbfdec;
+	--post-title-hover-color: #0ee09f;
+	--post-title-font-size: 1.6em;
+	--post-title-margin: 1em 0 0.2em 0;
+	--article-link-color: #099268;
+	--article-h2-padding-top: 1em;
+	--navigation-a-color: white;
+	--rec-h1-color: var(--navigation-a-color);
+	--rec-title-color: var(--navigation-a-color);
+	--rec-title-a-color: var(--navigation-a-color);
+	--excerpt-post-border-bottom: 1px solid #f1f3f5;
+
+}
+
+@media (min-width: 568px) {
+	:root {
+		--pan-layout-left-position: fixed;
+		--pan-layout-left-width: 32vw;
+		--pan-layout-left-height: 100vh;
+
+		--pan-layout-left-blank-display: block;
+
+		--pan-layout-left-avatar-display: flex;
+		--pan-layout-left-avatar-height: var(--pan-layout-left-width);
+		--avatar-image-width: 120px;
+		--avatar-image-height: var(--avatar-image-width);
+		--avatar-image-top: calc((var(--pan-layout-left-avatar-height) - var(--avatar-image-height)) * 0.9);
+
+		--pan-layout-left-breakline-display: block;
+
+		--pan-layout-left-rec-display: block;
+		--pan-layout-left-rec-border-top: 2px solid #4ad;
+		--pan-layout-left-rec-margin-top: 25px;
+
+		--pan-layout-left-tags-display: block;
+		--pan-layout-left-tags-border-top: var(--pan-layout-left-rec-border-top);
+		--pan-layout-left-tags-margin-top: var(--pan-layout-left-rec-margin-top);
+
+		--pan-layout-right-position: absolute;
+		--pan-layout-right-width: calc(100vw - var(--pan-layout-left-width));
+		--pan-layout-right-left: var(--pan-layout-left-width);
+		--main-width: 75%;
+	}
+}
+
+@media (min-width: 937px) {
+	:root {
+		--pan-layout-left-width: 300px;
+	}
+}

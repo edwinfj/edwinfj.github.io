@@ -1,0 +1,48 @@
+---
+---
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>{{ page.title }}</title>
+    <link rel="stylesheet" type="text/css" href="/assets/css/default.css">
+	<script type="text/javascript" src="/assets/js/jquery-3.1.1.min.js"></script>
+	<script type="text/javascript" src="/assets/js/main.js"></script>
+    {% feed_meta %}
+    {% seo %}
+  </head>
+  <body>
+  	<section class="pan-layout">
+		<section class="pan-layout-left">
+			<div id="pan-layout-left-blank1"></div>
+			<div class="pan-layout-left-avatar">
+				<img class="" src="/assets/images/GintamaAvatar.png" alt="Avatar">
+			</div>
+			<div id="pan-layout-left-blank2"></div>
+			<div class="pan-layout-left-nav">
+				{% include navigation.html %}
+			</div>
+			<div id="pan-layout-left-blank3"></div>
+			<div id="pan-layout-left-breakline"></div>
+			<div id="pan-layout-left-blank4"></div>
+			{% if layout.show_recommendation %}
+				<div class="pan-layout-left-rec">
+					{% include recommendation.html %}
+				</div>
+			{% else %}
+				<div class="pan-layout-left-tags">
+					{% include taglist.html %}
+				</div>
+			{% endif %}
+			<div id="pan-layout-left-blank5"></div>
+		</section>
+		<section class="pan-layout-right">
+			<div class="pan-layout-right-top"></div>
+			<div class="pan-layout-right-middle">
+				<div id="main">{{ content }}</div>
+			</div>
+			<div class="pan-layout-right-bottom"></div>
+		</section>
+	</section>
+  </body>
+</html>

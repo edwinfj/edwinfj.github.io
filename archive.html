@@ -1,0 +1,18 @@
+---
+title: archive
+topclass: archive
+---
+<ul>
+{% assign prev_year = "NULL" %}
+{% for post in site.posts %}
+	{% assign cur_year = post.date | date: "%Y" %}
+	{% if prev_year != cur_year %}
+		<h1>{{cur_year}}</h1>
+	{% endif %}
+	{% assign prev_year = cur_year %}
+	<li>
+		<a class="archive-title" href="{{post.url}}">{{post.title}}</a>
+		{% include date_tag.html%}
+	</li>
+{% endfor %}
+</ul>

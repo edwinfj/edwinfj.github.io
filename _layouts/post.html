@@ -1,0 +1,12 @@
+---
+layout: default
+show_recommendation: True
+---
+{% assign post = page %}
+<article>
+	<h1 class="post-title">{{post.title}}</h1>
+	<div>
+		{% include date_tag.html %}
+	</div>
+	{{content}}
+</article>
