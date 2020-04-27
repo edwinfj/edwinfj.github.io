@@ -150,7 +150,7 @@ Pay attention that the size of the queue should be large enough to feed all the 
 A subtle thing in the bounded queue approach is, if you cannot guarantee that the queue size is big enough to feed all the threads, you will need three pointers rather than two to maintain the queue states.
 - The first pointer points to the first semaphore with count 0 and has no waiting thread. It's updated in wait().
 - The second pointer points to the first semaphore with count 0 and has 1 waiting thread. It's updated in signal() or broadcast().
-- The third pointer points to the first semaphore with count 1 and has 1 waiting thread. This would be the tail of the queue. It's updated in wait().
+- The third pointer points to the first semaphore with count 1 and has 1 waiting thread. This would be the tail of the queue. It's updated in wait(). Besides, it's updated after releasing the lockObj. Therefore an extra lock is needed to synchronize its change.
 
 ## A Second Thought on .NET Synchronization Primitives
 
