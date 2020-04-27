@@ -1,11 +1,11 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.0.0">Jekyll</generator><link href="http://0.0.0.0:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://0.0.0.0:4000/" rel="alternate" type="text/html" /><updated>2020-04-26T15:50:13+00:00</updated><id>http://0.0.0.0:4000/feed.xml</id><title type="html">Edwin’s Novoland</title><subtitle>Whatever I want to say. Hello, this beautiful world.</subtitle><entry><title type="html">Condition Variable in .NET Framework</title><link href="http://0.0.0.0:4000/2020/04/24/cv-in-donet.html" rel="alternate" type="text/html" title="Condition Variable in .NET Framework" /><published>2020-04-24T00:00:00+00:00</published><updated>2020-04-24T00:00:00+00:00</updated><id>http://0.0.0.0:4000/2020/04/24/cv-in-donet</id><content type="html" xml:base="http://0.0.0.0:4000/2020/04/24/cv-in-donet.html">&lt;h2 id=&quot;motivation&quot;&gt;Motivation&lt;/h2&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.0.0">Jekyll</generator><link href="http://0.0.0.0:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://0.0.0.0:4000/" rel="alternate" type="text/html" /><updated>2020-04-27T08:07:50+00:00</updated><id>http://0.0.0.0:4000/feed.xml</id><title type="html">Edwin’s Novoland</title><subtitle>Whatever I want to say. Hello, this beautiful world.</subtitle><entry><title type="html">Condition Variable in .NET Framework</title><link href="http://0.0.0.0:4000/2020/04/24/cv-in-donet.html" rel="alternate" type="text/html" title="Condition Variable in .NET Framework" /><published>2020-04-24T00:00:00+00:00</published><updated>2020-04-24T00:00:00+00:00</updated><id>http://0.0.0.0:4000/2020/04/24/cv-in-donet</id><content type="html" xml:base="http://0.0.0.0:4000/2020/04/24/cv-in-donet.html">&lt;h2 id=&quot;motivation&quot;&gt;Motivation&lt;/h2&gt;
 
-&lt;p&gt;As a C++ programmer coming to the C# world, while writing multi-thread programs, the thing I miss the most is &lt;a href=&quot;https://en.cppreference.com/w/cpp/thread/condition_variable&quot;&gt;condition variable&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;As a C++ programmer coming to the C# world, the thing I miss the most when writing multi-threaded programs is &lt;a href=&quot;https://en.cppreference.com/w/cpp/thread/condition_variable&quot;&gt;condition variable&lt;/a&gt;.&lt;/p&gt;
 
-&lt;p&gt;I googled for a while trying to find a built-in counterpart or a crafted solution in .NET Framework. I failed. The top results returned were either wrong statements, or a design that lacked generalization.
+&lt;p&gt;I googled for a while trying to find a built-in counterpart or a crafted solution in .NET Framework. I failed. The top results returned were either wrong, or a design that lacked generalization.
 &lt;!--more--&gt;&lt;/p&gt;
 
-&lt;h2 id=&quot;minimal-requirements-for-the-condition-variable&quot;&gt;Minimal Requirements For The Condition Variable&lt;/h2&gt;
+&lt;h2 id=&quot;minimal-requirements-for-the-condition-varieable&quot;&gt;Minimal Requirements For The Condition Varieable&lt;/h2&gt;
 
 &lt;p&gt;A common use case for the condition variable is:&lt;/p&gt;
 &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;    CV queueOne, queueTwo;
@@ -22,7 +22,7 @@
     lock.acquire();
     updateStates3();
     queueTwo.signal();
-	lock.release();
+    lock.release();
 
     // thread 2
     lock.acquire();
@@ -39,13 +39,13 @@
     lock.release();
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;To apply above code pattern, the requirements listed below need to be fulfilled:&lt;/p&gt;
+&lt;p&gt;To apply above code pattern, a condition variable should at least fulfill the requirements listed below:&lt;/p&gt;
 
 &lt;ol&gt;
-  &lt;li&gt;Each condition variable instance has its own waiting queue.&lt;/li&gt;
+  &lt;li&gt;Each condition variable object has its own waiting queue.&lt;/li&gt;
   &lt;li&gt;The condition variable should at least support below three interfaces:
     &lt;ul&gt;
-      &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;void wait(lock)&lt;/code&gt;: the caller thread releases the lock and waits in the condition variable’s waiting queue.&lt;/li&gt;
+      &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;void wait(lock)&lt;/code&gt;: the calling thread releases the lock and waits in the condition variable’s waiting queue.&lt;/li&gt;
       &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;void signal()&lt;/code&gt;: one of the waiting thread in the condition variable’s waiting queue will be waken up and ready to run.&lt;/li&gt;
       &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;void broadcast()&lt;/code&gt;: all the waiting threads in the condition variable’s waiting queue will be waken up and ready to run.&lt;/li&gt;
     &lt;/ul&gt;
@@ -55,17 +55,17 @@
 &lt;/ol&gt;
 
 &lt;h2 id=&quot;synchronization-primitives-in-net-framework&quot;&gt;Synchronization Primitives in .NET Framework&lt;/h2&gt;
-&lt;p&gt;.NET Framework 4.8 provides many synchronization primitives in &lt;a href=&quot;https://docs.microsoft.com/en-us/dotnet/api/system.threading?view=netframework-4.8&quot;&gt;&lt;em&gt;System.Threading&lt;/em&gt;&lt;/a&gt; namespace, such as WaitHandle class and its derivations (Mutex, Semaphore, AutoResetEvent, etc.), Monitor, SpinLock, ReaderWriterLock.&lt;/p&gt;
+&lt;p&gt;.NET Framework 4.8 provides many synchronization primitives in &lt;a href=&quot;https://docs.microsoft.com/en-us/dotnet/api/system.threading?view=netframework-4.8&quot;&gt;&lt;em&gt;System.Threading&lt;/em&gt;&lt;/a&gt; namespace, such as WaitHandle class and its derivations (Mutex, Semaphore, AutoResetEvent, etc.), Monitor, SpinLock, and ReaderWriterLock.&lt;/p&gt;
 
-&lt;p&gt;WaitHandle and its derivations are all stateful. That means a signal() equivalent API call will affect the next wait() call. This breaks requirement 4. Besides, since the state is managed by WaitHandle class, there is no &lt;code class=&quot;highlighter-rouge&quot;&gt;void wait(lock)&lt;/code&gt; equivalent API.&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://docs.microsoft.com/en-us/dotnet/api/system.threading.waithandle?view=netframework-4.8&quot;&gt;&lt;em&gt;WaitHandle&lt;/em&gt;&lt;/a&gt; and its derivations are all stateful. That means a signal() equivalent API call will affect the next wait() call. This breaks requirement 4. Besides, since the lock state is managed by WaitHandle objects, there is no &lt;code class=&quot;highlighter-rouge&quot;&gt;void wait(lock)&lt;/code&gt; equivalent API.&lt;/p&gt;
 
-&lt;h3 id=&quot;the-common-pitfall-monitor-as-condition-variable&quot;&gt;The Common Pitfall: Monitor as Condition Variable&lt;/h3&gt;
+&lt;h3 id=&quot;the-common-pitfall-monitor-as-condition-variables&quot;&gt;The Common Pitfall: Monitor as Condition Variables&lt;/h3&gt;
 
 &lt;p&gt;Some people stated that &lt;a href=&quot;https://docs.microsoft.com/en-us/dotnet/api/system.threading.monitor?view=netframework-4.8&quot;&gt;&lt;em&gt;System.Threading.Monitor&lt;/em&gt;&lt;/a&gt; is a counterpart to the condition variable.&lt;/p&gt;
 
 &lt;p&gt;I don’t think so.&lt;/p&gt;
 
-&lt;p&gt;Indeed, Monitor is stateless. However, it is a static class and it does not have its own waiting queue. Applying Monitor to the code pattern above, it would be like:&lt;/p&gt;
+&lt;p&gt;Indeed, Monitor is stateless. However Monitor is a static class and it does not have its own waiting queue. Applying Monitor to the code pattern above, it would be like:&lt;/p&gt;
 &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;    // thread 1
     Monitor.Enter(obj)
     updateStates1();
@@ -94,61 +94,68 @@
     Monitor.Pulse(obj);
     Monitor.Exit(obj);
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;The problem is, the states maintained in updateStatesX() need to be synchronized. Therefore I have to use one lock in thread 1 and thread 2. Monitor.Wait(obj) calls on the object it acquired before, and waits on that object, therefore both thread 1 and thread 2 are waiting on obj. When another thread calls Monitor.Pulse(obj), either thread 1 and thread 2 could be woken up.&lt;/p&gt;
+&lt;p&gt;The problem is, the states maintained in updateStatesX() need to be synchronized. Therefore a single lock is required to synchronize all the updateStatesX() in thread 1 and thread 2. Monitor.Wait(obj) calls on the object it has acquired, and waits on that object. As a result both thread 1 and thread 2 are waiting on obj. When another thread calls Monitor.Pulse(obj), it does not control which thread to wake up. Both thread 1 and thread 2 could be waken up.&lt;/p&gt;
 
-&lt;p&gt;It failed to implement the code pattern above.&lt;/p&gt;
+&lt;p&gt;As a, using Monitor alone failed to implement the code pattern above.&lt;/p&gt;
 
 &lt;h2 id=&quot;implement-condition-variables-with-semaphores&quot;&gt;Implement Condition Variables with Semaphores&lt;/h2&gt;
-&lt;p&gt;Luckily, &lt;a href=&quot;http://birrell.org/andrew/papers/ImplementingCVs.pdf&quot;&gt;Andrew Birrell has studied this topic back in 2003&lt;/a&gt;. It’s feasible to implement condition variables with semaphores. Apply his solution to .NET Framework, it would be like:&lt;/p&gt;
+&lt;p&gt;Luckily, &lt;a href=&quot;http://birrell.org/andrew/papers/ImplementingCVs.pdf&quot;&gt;Andrew Birrell has studied this topic back in 2003&lt;/a&gt;. It’s feasible to implement condition variables with semaphores. Adapting his solution to .NET Framework, it would be like:&lt;/p&gt;
 &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;    class CV {
         Queue&amp;lt;SemaphoreSlim&amp;gt; waitQueue = new Queue&amp;lt;SemaphoreSlim&amp;gt;();
 
         // make sure the calling thread has acquired lockObj
         void wait(ref object lockObj) {
-        	SemaphoreSlim s = new SemaphoreSlim(0);
-        	waitQueue.Enqueue(s);
-        	Monitor.Exit(lockObj);
-        	s.Wait();
-        	Monitor.Enter(lockObj);
+            SemaphoreSlim s = new SemaphoreSlim(0);
+            waitQueue.Enqueue(s);
+            Monitor.Exit(lockObj);
+            s.Wait();
+            Monitor.Enter(lockObj);
         }
 
         // make sure the calling thread has acquired lockObj
         void signal() {
-        	if (waitQueue.Count != 0) {
-        		s = waitQueue.Dequeue();
-        		s.Release();
-        	}
+            if (waitQueue.Count != 0) {
+                s = waitQueue.Dequeue();
+                s.Release();
+            }
         }
 
         // make sure the calling thread has acquired lockObj
         void broadcast() {
-        	while (waitQueue.Count != 0) {
-        		s = waitQueue.Dequeue();
-        		s.Release();
-        	}
+            while (waitQueue.Count != 0) {
+                s = waitQueue.Dequeue();
+                s.Release();
+            }
         }
     }
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;Each wait() makes the calling thread to wait in a semaphore’s waiting queue. All the semaphores of a condition variable are stored in a queue, which becomes the condition variable’s very own waiting queue. The maximum size of the queue is the maximum possible number of threads in the process.&lt;/p&gt;
+&lt;p&gt;Each wait() makes the calling thread to wait in a semaphore’s waiting queue. All the semaphores of a condition variable are stored in a queue, which becomes the condition variable’s very own waiting queue. The size of the queue could grow but is topped by the maximum number of threads in the process.&lt;/p&gt;
 
-&lt;p&gt;The queue becomes a global state. However, since when wait(), signal() or broadcast() is called a lock has been acquired, no more lock is required to synchronize the state of the queue.&lt;/p&gt;
+&lt;p&gt;The queue becomes a global state, and needs to synchronize across multiple threads. However, each wait(), signal() or broadcast() call assumes that a lock has been acquired, therefore no more lock is needed to synchronize the state of the queue.&lt;/p&gt;
 
-&lt;p&gt;I chose to use SemaphoreSlim because I don’t need synchronization cross process boundaries. You can adapt the code to your own needs.&lt;/p&gt;
-
-&lt;p&gt;Make sure wrap the code in a try block, and release the lock in the finally block.&lt;/p&gt;
+&lt;p&gt;I chose to use &lt;a href=&quot;https://docs.microsoft.com/en-us/dotnet/api/system.threading.semaphoreslim?view=netframework-4.8&quot;&gt;&lt;em&gt;SemaphoreSlim&lt;/em&gt;&lt;/a&gt; because I don’t need synchronization to cross process boundaries. If you need inter-process synchronization, you can replace SemaphoreSlim with &lt;a href=&quot;https://docs.microsoft.com/en-us/dotnet/api/system.threading.semaphore?view=netframework-4.8&quot;&gt;&lt;em&gt;Semaphore&lt;/em&gt;&lt;/a&gt; and replace Monitor with &lt;a href=&quot;https://docs.microsoft.com/en-us/dotnet/api/system.threading.mutex?view=netframework-4.8&quot;&gt;&lt;em&gt;Mutex&lt;/em&gt;&lt;/a&gt;.&lt;/p&gt;
 
 &lt;h3 id=&quot;performance-improvement&quot;&gt;Performance Improvement&lt;/h3&gt;
-&lt;p&gt;Since wait(), signal() and broadcast() are in the sync body, each of them could become the performance bottleneck. Based on my experience, object generation and garbage collection is time consuming in .NET Framework. It’s better to avoid frequent &lt;code class=&quot;highlighter-rouge&quot;&gt;new&lt;/code&gt; in the sync body, as in wait().&lt;/p&gt;
+&lt;p&gt;Since wait(), signal() and broadcast() are in the sync body, each of them could become the performance bottleneck. Based on my experience, object generation and garbage collection are time consuming in .NET Framework. It’s better to avoid frequent &lt;code class=&quot;highlighter-rouge&quot;&gt;new&lt;/code&gt; in the sync body.&lt;/p&gt;
 
-&lt;p&gt;Instead of creating a new semaphore and discard it in each wait, we could allocate semaphores beforehand and store them in a bounded queue. In each wait(), the semaphore on the front of the queue is used. Make sure the bounded queue size is large enough to feed all the threads.&lt;/p&gt;
+&lt;p&gt;Instead of creating a new semaphore and discard it in each wait(), semaphores could be allocated and stored in a bounded queue beforehand. In each wait(), the semaphore on the front of the queue is retrieved and used.&lt;/p&gt;
+
+&lt;p&gt;Pay attention that the size of the queue should be large enough to feed all the threads. This is very important.&lt;/p&gt;
+
+&lt;p&gt;A sutle thing in the bounded queue approach is, if you cannot guarantee that the queue size is big enough to feed all the threads, you will need three pointers rather than two to maintain the queue states.&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;The first pointer points to the first semaphore with count 0 and has no waiting thread. It’s updated in wait().&lt;/li&gt;
+  &lt;li&gt;The second pointer points to the first semaphore with count 0 and has 1 waiting thread. It’s updated in signal() or broadcast().&lt;/li&gt;
+  &lt;li&gt;The third pointer points to the first semaphore with count 1 and has 1 waiting thread. This would be the tail of the queue. It’s updated in wait().&lt;/li&gt;
+&lt;/ul&gt;
 
 &lt;h2 id=&quot;a-second-thought-on-net-synchronization-primitives&quot;&gt;A Second Thought on .NET Synchronization Primitives&lt;/h2&gt;
 
-&lt;p&gt;The most commonly used synchronization models are producer/consumer, reader/writer and barrier.&lt;/p&gt;
+&lt;p&gt;The most commonly used synchronization models are producer/consumer, reader/writer and barrier. As a C++ programmer, I would choose to implement them using condition variables and mutexes.&lt;/p&gt;
 
-&lt;p&gt;As C++ programmer, I would choose to implement them using condition variables and mutexes. In .NET, there are &lt;em&gt;Barrier&lt;/em&gt; and &lt;em&gt;ReaderWriterLock&lt;/em&gt; classes. The producer/consumer could be implemented using other primitives with care.&lt;/p&gt;
+&lt;p&gt;As in .NET, there exists the &lt;a href=&quot;https://docs.microsoft.com/en-us/dotnet/api/system.threading.barrier?view=netframework-4.8&quot;&gt;&lt;em&gt;Barrier&lt;/em&gt;&lt;/a&gt; and &lt;a href=&quot;https://docs.microsoft.com/en-us/dotnet/api/system.threading.readerwriterlock?view=netframework-4.8&quot;&gt;&lt;em&gt;ReaderWriterLock&lt;/em&gt;&lt;/a&gt; classes. The producer/consumer model could be implemented using other primitives with care.&lt;/p&gt;
 
-&lt;p&gt;I guess the reason that .NET does not have condition variable is that the it tries to discourage users from implementing synchronization models from scratch. Multi-threaded code is notorious to be bug prone and difficult to debug. Users better leave them to more experienced teams.&lt;/p&gt;
+&lt;p&gt;I guess the reason that .NET does not provide condition variable is that it tries to discourage users from implementing synchronization models from scratch. Multi-threaded code is notorious to be bug prone and difficult to debug. It better be left to the more experienced programmers.&lt;/p&gt;
 
-&lt;p&gt;Well, however, it’s never guaranteed that all use cases can be covered by a constant number of synchronization models. Given the benefits of condition variables, giving it up would result in a much more difficult situation when the synchronization models provided by the library does not cover the use case.&lt;/p&gt;</content><author><name></name></author><category term="condition variable" /><category term=".NET Framework" /><category term="multi-thread" /><category term="lock" /><summary type="html">Motivation As a C++ programmer coming to the C# world, while writing multi-thread programs, the thing I miss the most is condition variable. I googled for a while trying to find a built-in counterpart or a crafted solution in .NET Framework. I failed. The top results returned were either wrong statements, or a design that lacked generalization.</summary></entry></feed>
+&lt;p&gt;Well, however, no one can guarante that all the user use cases can be covered by a constant number of synchronization models. Given the benefits of condition variables, discarding it would result in a much more difficult situation when the synchronization models provided by the library does not cover the use cases.&lt;/p&gt;</content><author><name></name></author><category term="condition variable" /><category term=".NET Framework" /><category term="multi-thread" /><category term="lock" /><summary type="html">Motivation As a C++ programmer coming to the C# world, the thing I miss the most when writing multi-threaded programs is condition variable. I googled for a while trying to find a built-in counterpart or a crafted solution in .NET Framework. I failed. The top results returned were either wrong, or a design that lacked generalization.</summary></entry></feed>
