@@ -11,7 +11,7 @@ As a C++ programmer coming to the C# world, the thing I miss the most when writi
 I googled for a while trying to find a built-in counterpart or a crafted solution in .NET Framework. I failed. The top results returned were either wrong, or a design that lacked generalization.
 <!--more-->
 
-## Minimal Requirements For The Condition Varieable
+## Minimal Requirements For The Condition Variable
 
 A common use case for the condition variable is:
 ```	
@@ -99,7 +99,7 @@ Indeed, Monitor is stateless. However Monitor is a static class and it does not 
 ```
 The problem is, the states maintained in updateStatesX() need to be synchronized. Therefore a single lock is required to synchronize all the updateStatesX() in thread 1 and thread 2. Monitor.Wait(obj) calls on the object it has acquired, and waits on that object. As a result both thread 1 and thread 2 are waiting on obj. When another thread calls Monitor.Pulse(obj), it does not control which thread to wake up. Both thread 1 and thread 2 could be waken up.
 
-As a, using Monitor alone failed to implement the code pattern above.
+As a result, using Monitor alone failed to implement the code pattern above.
 
 ## Implement Condition Variables with Semaphores
 Luckily, [Andrew Birrell has studied this topic back in 2003][ab-paper]. It's feasible to implement condition variables with semaphores. Adapting his solution to .NET Framework, it would be like:
@@ -147,7 +147,7 @@ Instead of creating a new semaphore and discard it in each wait(), semaphores co
 
 Pay attention that the size of the queue should be large enough to feed all the threads. This is very important.
 
-A sutle thing in the bounded queue approach is, if you cannot guarantee that the queue size is big enough to feed all the threads, you will need three pointers rather than two to maintain the queue states.
+A subtle thing in the bounded queue approach is, if you cannot guarantee that the queue size is big enough to feed all the threads, you will need three pointers rather than two to maintain the queue states.
 - The first pointer points to the first semaphore with count 0 and has no waiting thread. It's updated in wait().
 - The second pointer points to the first semaphore with count 0 and has 1 waiting thread. It's updated in signal() or broadcast().
 - The third pointer points to the first semaphore with count 1 and has 1 waiting thread. This would be the tail of the queue. It's updated in wait().
