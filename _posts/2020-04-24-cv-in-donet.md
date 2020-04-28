@@ -152,6 +152,8 @@ A subtle thing in the bounded queue approach is, if you cannot guarantee that th
 - The second pointer points to the first semaphore with count 0 and has 1 waiting thread. It's updated in signal() or broadcast().
 - The third pointer points to the first semaphore with count 1 and has 1 waiting thread. This would be the tail of the queue. It's updated in wait(). Besides, it's updated after releasing the lockObj. Therefore an extra lock is needed to synchronize its change.
 
+An alternative to bounded queue is linked list. Just swap the free semaphore to the tail of the linked list. Similar to the bounded queue, three pointers are required to maintain the linked list.
+
 ## A Second Thought on .NET Synchronization Primitives
 
 The most commonly used synchronization models are producer/consumer, reader/writer and barrier. As a C++ programmer, I would choose to implement them using condition variables and mutexes.
