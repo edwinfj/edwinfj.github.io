@@ -207,9 +207,9 @@ Oversized Timeout dictionary could still be a problem. To mitigate it, the `T` c
 
 ## The Result
 
-With the refined version of the batch CancellationTokenSource, the lock contention on TimerQueue was mitigated. Other bottlenecks in the code path had the chance to be exposed.
+With the refined version of the batch CancellationTokenSource, we mitigated the lock contention issue on TimerQueue. Other bottlenecks in the code path had the chance to be exposed.
 
-Eventually, we reduced the CPU usage from 100% to \~90% on average, and boosted the upload speed to the original's \~4x.
+Eventually, we reduced the CPU usage from 100% to \~90% on average, and increased the upload speed to the original's \~4x.
 
 
 [gwpost]: https://geeks-world.github.io/articles/468611/index.html#h3
