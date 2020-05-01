@@ -1,6 +1,6 @@
 ---
 title: Condition Variable in .NET Framework
-tags: [condition variable, .NET Framework, multi-thread, lock]
+tags: [Condition Variable, .NET Framework, Multi-thread, Lock Contention]
 excerpt_separator: <!--more-->
 ---
 
