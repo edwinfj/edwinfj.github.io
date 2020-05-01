@@ -177,7 +177,8 @@ A separate thread could be created to pre-allocate the CancellationTokenSource f
 
 The pre-allocate thread runs periodically. The rule of thumb is that the pre-allocated CancellationTokenSource in this pre-allocation should cover all the requests coming before the next pre-allocation, provided the Timeouts of the requests are in the Timeout dictionary.
 ```
-// ---- represents the time range that should be covered by the first pre-allocation. The time range has the same length as the pre-allocate period.
+// ---- represents the time range that should be covered by the first pre-allocation.
+//      The time range has the same length as the pre-allocate period.
 bucket:          |    |    |    |    |    |    |
 pre-allocate:      |        |        |
                    | Timeout       |--------|
@@ -191,8 +192,10 @@ A subtle thing is, two requests having the same Timeout is a too stringent requi
 
 With discretized Timeout, the range that a pre-allocation should cover increases.
 ```
-// ---- represents the time range that should be covered by the first pre-allocation. The time range has the same length as the pre-allocate period.
-// **** represents the extra time range that should be covered by the first pre-allocation. The extra range has the same length as the bucket size.
+// ---- represents the time range that should be covered by the first pre-allocation.
+//      The time range has the same length as the pre-allocate period.
+// **** represents the extra time range that should be covered by the first pre-allocation.
+//      The extra range has the same length as the bucket size.
 bucket:          |    |    |    |    |    |    |
 pre-allocate:      |        |        |
                    | Timeout       |--------|
