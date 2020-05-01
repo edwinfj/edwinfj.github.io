@@ -173,6 +173,14 @@ pre.highlight, code.highlighter-rouge {
 	border-bottom: var(--excerpt-post-border-bottom);
 }
 
+.excerpt a {
+	color: var(--article-link-color);
+}
+
+.excerpt a:hover {
+	color: var(--post-title-hover-color);
+}
+
 .post-title a {
 	color: black;
 }
