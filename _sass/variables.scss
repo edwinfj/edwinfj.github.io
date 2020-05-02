@@ -12,18 +12,22 @@
 	--pan-layout-left-width: 100vw;
 	--pan-layout-left-height: auto;
 	--pan-layout-left-left: 0px;
+	--pan-layout-left-top: 0px;
 	--pan-layout-left-background: #54bc75;
 
 	--pan-layout-left-blank-display: none;
 
 	--pan-layout-left-avatar-display: none;
 
+	--pan-layout-left-nav-rss-display: block;
+
 	--pan-layout-left-breakline-display: none;
-	--pan-layout-left-breakline-border-bottom: 2px solid #7fdd9d; 
 
 	--pan-layout-left-rec-display: none;
 
 	--pan-layout-left-tags-display: none;
+
+	--pan-layout-left-footer-display: none;
 
 	--pan-layout-right-position: static;
 	--pan-layout-right-left: 0px;
@@ -59,26 +63,40 @@
 
 		--pan-layout-left-blank-display: block;
 
+		--pan-layout-left-blank1-height: 10vh;
+		--pan-layout-left-blank2-height: 1em;
+		--pan-layout-left-blank3-height: 3vh;
+		--pan-layout-left-blank4-height: 4vh;
+		--pan-layout-left-blank5-height: 3vh;
+
 		--pan-layout-left-avatar-display: flex;
-		--pan-layout-left-avatar-height: var(--pan-layout-left-width);
+		--pan-layout-left-avatar-height: var(--avatar-image-height);
 		--avatar-image-width: 120px;
 		--avatar-image-height: var(--avatar-image-width);
-		--avatar-image-top: calc((var(--pan-layout-left-avatar-height) - var(--avatar-image-height)) * 0.9);
+
+		--pan-layout-left-nav-rss-display: none;
 
 		--pan-layout-left-breakline-display: block;
+		--pan-layout-left-breakline-border-bottom: 2px solid #7fdd9d; 
 
 		--pan-layout-left-rec-display: block;
-		--pan-layout-left-rec-border-top: 2px solid #4ad;
-		--pan-layout-left-rec-margin-top: 25px;
+		--pan-layout-left-rec-height: calc((100vh - var(--pan-layout-left-blank1-height) - var(--pan-layout-left-blank2-height) - var(--pan-layout-left-blank3-height) - var(--pan-layout-left-blank4-height) - var(--pan-layout-left-blank5-height) - var(--pan-layout-left-avatar-height) - 2em) * 0.95);
 
 		--pan-layout-left-tags-display: block;
-		--pan-layout-left-tags-border-top: var(--pan-layout-left-rec-border-top);
-		--pan-layout-left-tags-margin-top: var(--pan-layout-left-rec-margin-top);
+		--pan-layout-left-tags-height: var(--pan-layout-left-rec-height);
+
+		--pan-layout-left-footer-display: flex;
 
 		--pan-layout-right-position: absolute;
 		--pan-layout-right-width: calc(100vw - var(--pan-layout-left-width));
 		--pan-layout-right-left: var(--pan-layout-left-width);
 		--main-width: 75%;
+	}
+}
+
+@media (min-width: 728px) {
+	:root {
+		--pan-layout-left-nav-rss-display: block;
 	}
 }
 

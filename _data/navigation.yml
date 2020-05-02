@@ -4,3 +4,5 @@
   link: /archive.html
 - name: About
   link: /about.html
+- name: Rss
+  link: /feed.xml

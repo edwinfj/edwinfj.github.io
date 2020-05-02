@@ -1,6 +1,7 @@
 /* define some global parameters */
 body {
 	font-family: open_sans, sans_serif;
+	margin: 0px;
 }
 pre.highlight, code.highlighter-rouge {
 	font-family: "Lucida Console", "Courier New", "Monaco", "Spoqa Han Sans", monospace;
@@ -30,12 +31,13 @@ pre.highlight, code.highlighter-rouge {
 
 #pan-layout-left-blank1 {
 	display: var(--pan-layout-left-blank-display);
-	height: 100px;
+	height: var(--pan-layout-left-blank1-height);
 }
 
 .pan-layout-left-avatar {
 	display: var(--pan-layout-left-avatar-display);	
 	justify-content: center;
+	height: var(--pan-layout-left-avatar-height);
 }
 
 .pan-layout-left-avatar img {
@@ -46,7 +48,7 @@ pre.highlight, code.highlighter-rouge {
 
 #pan-layout-left-blank2 {
 	display: var(--pan-layout-left-blank-display);
-	height: 1em;
+	height: var(--pan-layout-left-blank2-height);
 }
 
 .pan-layout-left-nav {
@@ -62,9 +64,13 @@ pre.highlight, code.highlighter-rouge {
 	font-weight: bold;
 }
 
+#navigation-rss {
+	display: var(--pan-layout-left-nav-rss-display);
+}
+
 #pan-layout-left-blank3 {
 	display: var(--pan-layout-left-blank-display);
-	height: 2em;
+	height: var(--pan-layout-left-blank3-height);
 }
 
 #pan-layout-left-breakline {
@@ -74,11 +80,13 @@ pre.highlight, code.highlighter-rouge {
 
 #pan-layout-left-blank4 {
 	display: var(--pan-layout-left-blank-display);
-	height: 2em;
+	height: var(--pan-layout-left-blank4-height);
 }
 
 .pan-layout-left-rec {
 	display: var(--pan-layout-left-rec-display);
+	height: var(--pan-layout-left-rec-height);
+	overflow-y: auto;
 }
 
 .pan-layout-left-rec h1 {
@@ -111,12 +119,13 @@ pre.highlight, code.highlighter-rouge {
 
 .pan-layout-left-tags {
 	display: var(--pan-layout-left-tags-display);
+	height: var(--pan-layout-left-tags-height);
+	overflow-y: auto;
 }
 
 #taglist {
 	margin: 0;
 	padding: 0 15px;
-	overflow-y: auto;
 }
 
 #taglist li {
@@ -140,7 +149,14 @@ pre.highlight, code.highlighter-rouge {
 
 #pan-layout-left-blank5 {
 	display: var(--pan-layout-left-blank-display);
-	height: 20px;
+	height: var(--pan-layout-left-blank5-height);
+}
+
+#pan-layout-left-footer {
+	display: var(--pan-layout-left-footer-display);
+	justify-content: center;
+	font-size: 0.8em;
+	color: white;
 }
 
 .pan-layout-right {
