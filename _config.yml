@@ -73,5 +73,8 @@ plugins:
   # - vendor/gems/
   # - vendor/ruby/
 
+includes:
+  - tag/.NET Framework/index.html
+
 include:
   - tag/.NET Framework/index.html
